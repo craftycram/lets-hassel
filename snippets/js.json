@@ -1,0 +1,29 @@
+{
+  "require": {
+    "prefix": "!req",
+    "body": [
+      "const $1 = require('$2');$0"
+    ],
+    "description": "import dependencies - by Marc Rufeis"
+  },
+
+  "else if shortcut": {
+    "prefix": "!elif",
+    "body": [
+      "else if ($1) {",
+      "	$0",
+      "}"
+    ],
+    "description": "creates else if structure - by Marc Rufeis"
+  },
+  "index-js-generator": {
+    "prefix": "!index",
+    "body": [
+      "const ${TM_DIRECTORY/^.+\\/(.*)$/$1/} = require('./${TM_DIRECTORY/^.+\\/(.*)$/$1/}');",
+      "",
+      "module.exports = ${TM_DIRECTORY/^.+\\/(.*)$/$1/};",
+      ""
+    ],
+    "description": "creates index js structure - by Marc Rufeis"
+  }
+}

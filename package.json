@@ -1,0 +1,25 @@
+{
+    "name": "lets-hassel",
+    "displayName": "Let's Hassel",
+    "description": "A extension which adds snippets for a bunch of programming languages. Used in the programming classes @HfG",
+    "version": "0.0.1",
+    "publisher": "craftycram",
+    "engines": {
+        "vscode": "^1.39.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "javascript",
+                "path": "./snippets/js.json"
+            },
+            {
+                "language": "html",
+                "path": "./snippets/html.json"
+            }
+        ]
+    }
+}
