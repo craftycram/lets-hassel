@@ -4,7 +4,7 @@
     "description": "A extension which adds snippets for a bunch of programming languages. Used in the programming classes @HfG",
     "version": "0.0.2",
     "publisher": "craftycram",
-    "icon": "./res/logo-let-s-hassel.png",
+    "icon": "res/logo-let-s-hassel.png",
     "engines": {
         "vscode": "^1.39.0"
     },
