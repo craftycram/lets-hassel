@@ -9,7 +9,7 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
 * [Requirements](#requirements)
 * [Installation](#installation)  
 * [Features](#features)
-  * [Programming Languages & File Types](#supported-programming-languages-&-file-types)
+  * [Programming Languages & File Types](#supported-programming-languages--file-types)
     * [JavaScript](#javascript)
     * [HTML](#html)
     * [SVG](#svg)
@@ -145,5 +145,8 @@ These are similar to the commits of the GitHub repository.
 
 ### 2.1.2
 - Fixed unnecessary link in docs
+
+### 2.1.3
+- Fixed link in docs
 
 **Enjoy!**
