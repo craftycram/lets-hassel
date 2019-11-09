@@ -138,7 +138,10 @@ These are similar to the commits of the GitHub repository.
 ### 2.0.1
 - Fixed SVG spacing
 
-### 2.0.2
+### 2.1.0
 - Added docs
+
+### 2.1.1
+- Fixed version number in docs
 
 **Enjoy!**
