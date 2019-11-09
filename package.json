@@ -4,15 +4,19 @@
     "description": "A extension which adds snippets for a bunch of programming languages. Used in the programming classes @HfG",
     "version": "0.0.1",
     "publisher": "craftycram",
+    "icon": "./res/logo-let-s-hassel.png",
     "engines": {
         "vscode": "^1.39.0"
     },
     "categories": [
         "Snippets"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/craftycram/lets-hassel.git"
+    },
     "contributes": {
-        "snippets": [
-            {
+        "snippets": [{
                 "language": "javascript",
                 "path": "./snippets/js.json"
             },
