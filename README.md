@@ -15,7 +15,6 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
     * [SVG](#svg)
 * [Troubleshooting](#troubleshooting)
 * [Release Notes](#release-notes)
-* [Release Notes](#test)
 
 
 ## Requirements
