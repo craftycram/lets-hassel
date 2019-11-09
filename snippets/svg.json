@@ -3,7 +3,7 @@
     "prefix": "!svg",
     "body": [
       "<svg width=\"$1\" height=\"$2\" xmlns=\"http://www.w3.org/2000/svg\">",
-      "$0",
+      " $0",
       "</svg>"
     ],
     "description": "creates basic svg structure - by Marc Rufeis"
