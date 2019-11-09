@@ -1,4 +1,12 @@
 <p align="center"><a href="https://craftycram.net" target="_blank" rel="noopener noreferrer"><img width="100" src="https://marcrufeis.de/repo/logo-let-s-hassel.png" alt="Let's Hassel Logo"></a></p>
+<p align="center">
+  <a href="https://marketplace.visualstudio.com/items?itemName=craftycram.lets-hassel"><img src="https://vsmarketplacebadge.apphb.com/version/craftycram.lets-hassel.svg" alt="VS-Code-Marketplace-Version"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=craftycram.lets-hassel"><img src="https://vsmarketplacebadge.apphb.com/installs/craftycram.lets-hassel.svg" alt="VS-Code-Marketplace-Installs"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=craftycram.lets-hassel"><img src="https://vsmarketplacebadge.apphb.com/downloads/craftycram.lets-hassel.svg" alt="VS-Code-Marketplace-Downloads"></a>
+  <br/>
+  <a href="https://marketplace.visualstudio.com/items?itemName=craftycram.lets-hassel"><img src="https://vsmarketplacebadge.apphb.com/rating-star/craftycram.lets-hassel.svg" alt="VS-Code-Marketplace-Rating"></a>
+  </p>
+
 <h1 align="center">Let's Hassel - VS Code Extension</h1>
 
 ## Description
@@ -148,5 +156,8 @@ These are similar to the commits of the GitHub repository.
 
 ### 2.1.3
 - Fixed link in docs
+
+### 2.2.0
+- Added badges on top of the docs
 
 **Enjoy!**
