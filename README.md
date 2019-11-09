@@ -143,4 +143,7 @@ These are similar to the commits of the GitHub repository.
 ### 2.1.1
 - Fixed version number in docs
 
+### 2.1.2
+- Fixed unnecessary link in docs
+
 **Enjoy!**
