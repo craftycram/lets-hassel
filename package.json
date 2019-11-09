@@ -22,6 +22,10 @@
                 "path": "./snippets/js.json"
             },
             {
+                "language": "svg",
+                "path": "./snippets/svg.json"
+            },
+            {
                 "language": "html",
                 "path": "./snippets/html.json"
             }
