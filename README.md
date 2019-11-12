@@ -22,7 +22,7 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
     * [JavaScript](#javascript)
     * [HTML](#html)
     * [SVG](#svg)
-  * [Node.js Workspace Auto-Setup](#node.js-workspace-auto-setup)
+  * [Node.js Workspace Auto-Setup](#nodejs-workspace-auto-setup)
     * [Setup](#setup)
     * [Usage](#usage)
     * [Commands](#commands)
@@ -227,5 +227,8 @@ These are similar to the commits of the GitHub repository.
 
 ### 3.0.2
 - Fixed docs release notes
+
+### 3.0.3
+- Fixed docs hyperlink
 
 **Enjoy!**
