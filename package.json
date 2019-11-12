@@ -1,21 +1,21 @@
 {
 	"name": "lets-hassel",
-    "displayName": "Let's Hassel",
-    "description": "A extension which adds snippets for a bunch of programming languages. Used in the programming classes @HfG",
-    "version": "2.2.0",
-    "publisher": "craftycram",
-    "icon": "res/logo-let-s-hassel.png",
+	"displayName": "Let's Hassel",
+	"description": "A extension which adds snippets for a bunch of programming languages. Used in the programming classes @HfG",
+	"version": "3.0.0",
+	"publisher": "craftycram",
+	"icon": "res/logo-let-s-hassel.png",
 	"engines": {
 		"vscode": "^1.40.0"
 	},
 	"categories": [
-        "Snippets",
+		"Snippets",
 		"Other"
 	],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/craftycram/lets-hassel.git"
-    },
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/craftycram/lets-hassel.git"
+	},
 	"activationEvents": [
 		"*"
 	],
@@ -35,20 +35,20 @@
 				"title": "[Let's Hassel] > Install required tools (Debian)"
 			}
 		],
-        "snippets": [
-            {
-                "language": "javascript",
-                "path": "./snippets/js.json"
-            },
-            {
-                "language": "svg",
-                "path": "./snippets/svg.json"
-            },
-            {
-                "language": "html",
-                "path": "./snippets/html.json"
-            }
-        ]
+		"snippets": [
+			{
+				"language": "javascript",
+				"path": "./snippets/js.json"
+			},
+			{
+				"language": "svg",
+				"path": "./snippets/svg.json"
+			},
+			{
+				"language": "html",
+				"path": "./snippets/html.json"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
