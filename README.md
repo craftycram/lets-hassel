@@ -222,4 +222,10 @@ These are similar to the commits of the GitHub repository.
 - Added Node.js workspace setup commands
 - Docs update coming soon
 
+### 3.0.1
+- Added Node.js workspace instructions to the docs
+
+### 3.0.2
+- Fixed docs release notes
+
 **Enjoy!**
