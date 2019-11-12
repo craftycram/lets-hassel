@@ -1,21 +1,40 @@
 {
-    "name": "lets-hassel",
+	"name": "lets-hassel",
     "displayName": "Let's Hassel",
     "description": "A extension which adds snippets for a bunch of programming languages. Used in the programming classes @HfG",
     "version": "2.2.0",
     "publisher": "craftycram",
     "icon": "res/logo-let-s-hassel.png",
-    "engines": {
-        "vscode": "^1.39.0"
-    },
-    "categories": [
-        "Snippets"
-    ],
+	"engines": {
+		"vscode": "^1.40.0"
+	},
+	"categories": [
+        "Snippets",
+		"Other"
+	],
     "repository": {
         "type": "git",
         "url": "https://github.com/craftycram/lets-hassel.git"
     },
-    "contributes": {
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.setupNode",
+				"title": "[Let's Hassel] > Setup Node.js project in this folder"
+			},
+			{
+				"command": "extension.installMacOS",
+				"title": "[Let's Hassel] > Install required tools (MacOS)"
+			},
+			{
+				"command": "extension.installDebian",
+				"title": "[Let's Hassel] > Install required tools (Debian)"
+			}
+		],
         "snippets": [
             {
                 "language": "javascript",
@@ -30,5 +49,23 @@
                 "path": "./snippets/html.json"
             }
         ]
-    }
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.7",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.40.0",
+		"glob": "^7.1.5",
+		"mocha": "^6.2.2",
+		"typescript": "^3.6.4",
+		"tslint": "^5.20.0",
+		"vscode-test": "^1.2.2"
+	}
 }

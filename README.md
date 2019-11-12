@@ -160,4 +160,8 @@ These are similar to the commits of the GitHub repository.
 ### 2.2.0
 - Added badges on top of the docs
 
+### 3.0.0
+- Added Node.js workspace setup commands
+- Docs update coming soon
+
 **Enjoy!**
