@@ -14,6 +14,7 @@
 A extension which allows you to hustle (hassel) more efficient by adding snippets for a bunch of programming languages. Used in the programming classes at HfG Schwäbisch Gmünd.
 
 ##### Table of Contents  
+
 * [Requirements](#requirements)
 * [Installation](#installation)  
 * [Features](#features)
@@ -21,13 +22,18 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
     * [JavaScript](#javascript)
     * [HTML](#html)
     * [SVG](#svg)
+  * [Node.js Workspace Auto-Setup](#node.js-workspace-auto-setup)
+    * [Setup](#setup)
+    * [Usage](#usage)
+    * [Commands](#commands)
 * [Troubleshooting](#troubleshooting)
 * [Release Notes](#release-notes)
 
 
 ## Requirements
 
-You only need Visual Studio Code installed to use this extension.
+You need Visual Studio Code installed to use this extension.  
+If you want to use the Node.js workspace functionality you also need `jq` installed. The extension supports installing it itself. [[Installation (Tools)](#setup)]
 
 > Install Visual Studio Code: [Official Website](https://code.visualstudio.com/)
 
@@ -35,7 +41,7 @@ You only need Visual Studio Code installed to use this extension.
 ## Installation
 
 The extension can be installed via the `VS Code Extension Manager`.
-1. Open the `Extension Manager` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd> or via the menu `View > Extensions`.
+1. Open the `Extension Manager` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>X</kbd> or via the menu `View > Extensions`.
 2. On the top-left highlight the search-bar.
 3. Enter the extensions name (`Let's Hassel`) or it's slug-name (`craftycram.lets-hassel`)
 4. Click on the green `Install` button.
@@ -46,6 +52,7 @@ The extension can be installed via the `VS Code Extension Manager`.
 ## Features
 
 Once you created a file of one of the supported types or languages you can auto-generate different code blocks by typing `!`and the shortname which you can find in these docs below.
+You can also use this extension to automatically generate a basic Node.js workspace. Instructions on how that feature can be used can be found in these docs as well.
 
 
 ### Supported Programming Languages & File Types
@@ -114,6 +121,57 @@ This generates the basic SVG structure.
 </svg>
 ```
 > You can use <kbd>⇥ Tab</kbd> to jump from `<TABSTOP>` to `<TABSTOP>` and to the `<FINALPOS>`
+
+### Node.js Workspace Auto-Setup
+
+This feature automatically generates you a basic Node.js workspace structure. It helps you to save time by not having to create all the files and folders each time you start a new project.  
+It creates the main `index.js`, initializes a git repository, installs `eslint` and starts its setup assistant. More details on that under [Usage](#usage)
+
+#### Setup
+
+Before you can use this functionality you need to have `jd` installed. It allows the extension to edit and process `JSON` files from the terminal.  
+To install it you can use the `Command Palette` which can be accessed by <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd>.
+
+There you enter  
+`Install required tools (MacOS)` if you are using Mac or  
+`Install required tools (Debian)` if you are on a Linux system.
+
+Or you can install it manually by following the developers official guide on their [website](https://stedolan.github.io/jq/).
+
+#### Usage
+
+1. Create a new project folder and open it in `VS Code`.
+2. Open the `Command Palette` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd> or via the menu `View > Command Palette`.
+3. Enter `Setup Node.js project in this folder`
+4. A input box will show up. Enter which Node.js version you want to use.
+5. A input box will show up. Enter your name or the one that should be shown as the author.
+6. In the terminal the installation/initialisation progress will start.
+7. Once it's finished the `eslint` configuration assistant will start and simplify the configuration for you.
+8. Your workspace is ready to go.
+
+The created structure will look like this:
+```
+.
+├── node_modules        // installed Node.js modules
+├── src
+│   └── index.js        // main index.js
+├── .eslintrc.json      // eslint config file
+├── .gitignore          // ignore build output and node_modules
+├── .nvmrc              // specifies which Node.js version to use
+├── package-lock.json   // version history of installed Node.js modules
+└── package.json        // npm configuration file
+```
+
+#### Commands
+
+**1. Install required tools (MacOS)**  
+This command installs `jd` on your MacOS-based system.
+
+**2. Install required tools (Debian)**  
+This command installs `jd` on your Debian-based system.
+
+**3. Setup Node.js project in this folder**  
+This command generates a basic Node.js project workspace. [[Details](#usage)]
 
 
 ## Troubleshooting
