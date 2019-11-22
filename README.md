@@ -231,4 +231,7 @@ These are similar to the commits of the GitHub repository.
 ### 3.0.3
 - Fixed docs hyperlink
 
+### 3.0.4
+- changed HTML snippet
+
 **Enjoy!**
