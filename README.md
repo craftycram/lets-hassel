@@ -27,7 +27,7 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
     * [Usage](#usage)
     * [Commands](#commands)
 * [Troubleshooting](#troubleshooting)
-* [Release Notes](#release-notes)
+* [Release Notes](https://github.com/craftycram/lets-hassel/blob/master/CHANGELOG.md)
 
 
 ## Requirements
@@ -180,58 +180,5 @@ This command generates a basic Node.js project workspace. [[Details](#usage)]
 Make sure that your file is in the correct language mode. Usually if you safe your file in the correct filetype VS Code automatically set's the correct language mode. If it doesn't you can also set it yourself in the bottom-right corner or by entering `Change Language Mode` in the `Command Palette`.
 > Read the official documentation for more detailed help: [VS Code Docs - Language Mode](https://code.visualstudio.com/docs/languages/overview#_changing-the-language-for-the-selected-file)
 
-## Release Notes
-
-These are similar to the commits of the GitHub repository.
-
-### 0.0.1
-- Initial release
-
-### 0.0.2
-- Added extension logo
-
-### 0.0.3
-- Fixed extension logo path
-
-### 1.0.0
-- Added SVG support
-- Fixed wrong character in HTML
-
-### 2.0.0
-- Fixed wrong version number
-
-### 2.0.1
-- Fixed SVG spacing
-
-### 2.1.0
-- Added docs
-
-### 2.1.1
-- Fixed version number in docs
-
-### 2.1.2
-- Fixed unnecessary link in docs
-
-### 2.1.3
-- Fixed link in docs
-
-### 2.2.0
-- Added badges on top of the docs
-
-### 3.0.0
-- Added Node.js workspace setup commands
-- Docs update coming soon
-
-### 3.0.1
-- Added Node.js workspace instructions to the docs
-
-### 3.0.2
-- Fixed docs release notes
-
-### 3.0.3
-- Fixed docs hyperlink
-
-### 3.0.4
-- changed HTML snippet
 
 **Enjoy!**
