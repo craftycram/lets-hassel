@@ -189,8 +189,6 @@ You can change some of the generators settings in the `VS Code settings` under `
 
 ##### Settings:
 
-<sup>
-
 1. Format:  
 This changes the format of the text between normal text or HTML formatted text.
 
@@ -208,7 +206,6 @@ The maximal amount of sentences in a paragraph.
 
 > You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
 
-</sup>
 
 <a name="lorem-usage"></a>
 #### Usage
