@@ -214,7 +214,7 @@ There are three different commands which generate different amount of text.
 
 1. Move your cursor to the position where the text should be generated or select the area you want to replace.
 2. Open the `Command Palette` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd> or via the menu `View > Command Palette`.
-3. Type one of the available commands. [[Commands](#commands)]
+3. Type one of the available commands. [[Commands](#ipsum-cmds)]
 4. Enter the amount of words, sentences or paragraphs in the popup window.
 5. Confirm with <kbd>&#x23ce; Return</kbd>.
 
