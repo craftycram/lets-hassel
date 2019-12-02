@@ -26,6 +26,10 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
     * [Setup](#setup)
     * [Usage](#usage)
     * [Commands](#commands)
+  * [LoremIpsum Generator](#loremipsum-generator)
+    * [Configuration](#lorem-config)
+    * [Usage](#lorem-usage)
+    * [Commands](#lorem-cmds)
 * [Troubleshooting](#troubleshooting)
 * [Release Notes](https://github.com/craftycram/lets-hassel/blob/master/CHANGELOG.md)
 
@@ -172,6 +176,63 @@ This command installs `jd` on your Debian-based system.
 
 **3. Setup Node.js project in this folder**  
 This command generates a basic Node.js project workspace. [[Details](#usage)]
+
+### LoremIpsum Generator
+
+You can use this feature to fill your placeholders with random text.
+You can either create a custom amount of words, sentences or paragraphs.
+
+<a name="lorem-config"></a>
+#### Configuration
+
+You can change some of the generators settings in the `VS Code settings` under `Extensions > Let's Hassel`.
+
+##### Settings:
+
+<sup>
+
+1. Format:  
+This changes the format of the text between normal text or HTML formatted text.
+
+2. Minimum words in a sentence:  
+The minimal amount of words used in a sentence.
+
+3. Maximum words in a sentence:  
+The maximal amount of words in a sentence.
+
+4. Minimum sentences in a paragraph:  
+The minimal amount of sentences in a paragraph.
+
+5. Maximum sentences in a paragraph:  
+The maximal amount of sentences in a paragraph.
+
+> You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
+
+</sup>
+
+<a name="lorem-usage"></a>
+#### Usage
+
+There are three different commands which generate different amount of text.  
+
+1. Move your cursor to the position where the text should be generated or select the area you want to replace.
+2. Open the `Command Palette` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd> or via the menu `View > Command Palette`.
+3. Type one of the available commands. [[Commands](#commands)]
+4. Enter the amount of words, sentences or paragraphs in the popup window.
+5. Confirm with <kbd>&#x23ce; Return</kbd>.
+
+
+<a name="lorem-cmds"></a>
+#### Commands
+
+**1. Generate a specified amount of words**  
+This command creates a random LoremIpsum text with a given amount of words.
+
+**2. Generate a specified amount of sentences**  
+This command creates a random LoremIpsum text with a given amount of sentences.
+
+**3. Generate a specified amount of paragraphs**  
+This command creates a random LoremIpsum text with a given amount of paragraphs.
 
 
 ## Troubleshooting

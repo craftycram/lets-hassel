@@ -21,8 +21,7 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.setupNode",
 				"title": "[Let's Hassel] > Setup Node.js project in this folder"
 			},
@@ -33,10 +32,21 @@
 			{
 				"command": "extension.installDebian",
 				"title": "[Let's Hassel] > Install required tools (Debian)"
+			},
+			{
+				"command": "extension.loremIpsumWord",
+				"title": "[Let's Hassel > LoremIpsum] > Generate a specified amount of words."
+			},
+			{
+				"command": "extension.loremIpsumSentence",
+				"title": "[Let's Hassel > LoremIpsum] > Generate a specified amount of sentences."
+			},
+			{
+				"command": "extension.loremIpsunParagraph",
+				"title": "[Let's Hassel > LoremIpsum] > Generate a specified amount of paragraphs."
 			}
 		],
-		"snippets": [
-			{
+		"snippets": [{
 				"language": "javascript",
 				"path": "./snippets/js.json"
 			},
@@ -48,7 +58,46 @@
 				"language": "html",
 				"path": "./snippets/html.json"
 			}
-		]
+		],
+		"configuration": {
+			"title": "Let's Hassel",
+			"properties": {
+				"Let'sHassel.loremIpsum.format": {
+					"type": "string",
+					"default": "html",
+					"enum": ["html", "plain"],
+					"enumDescriptions": [
+						"creates plain text",
+						"creates text in HTML style"
+					],
+					"scope": "resource"
+				},
+				"Let'sHassel.loremIpsum.minSentencePerParagraph": {
+					"type": "number",
+					"default": 4,
+					"description": "Minimum Sentences in a Paragraph.",
+					"scope": "resource"
+				},
+				"Let'sHassel.loremIpsum.maxSentencePerParagraph": {
+					"type": "number",
+					"default": 8,
+					"description": "Maximum Sentences in a Paragraph.",
+					"scope": "resource"
+				},
+				"Let'sHassel.loremIpsum.minWordsPerSentence": {
+					"type": "number",
+					"default": 4,
+					"description": "Minimum Words in a Sentence.",
+					"scope": "resource"
+				},
+				"Let'sHassel.loremIpsum.maxWordsPerSentence": {
+					"type": "number",
+					"default": 16,
+					"description": "Maximum Words in a Sentence.",
+					"scope": "resource"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -67,5 +116,8 @@
 		"typescript": "^3.6.4",
 		"tslint": "^5.20.0",
 		"vscode-test": "^1.2.2"
+	},
+	"dependencies": {
+		"lorem-ipsum": "^2.0.3"
 	}
 }

@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
+## [4.0.0] - 2019-12-02
+### Added
+- LoremIpsum generator.
+- LoremIpsum generator instructions in documentation.
 
 ## [3.0.5] - 2019-11-28
 ### Changed

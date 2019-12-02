@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { formatWithOptions } from 'util';
 import { open } from 'fs';
 import { pathToFileURL, fileURLToPath } from 'url';
+import { loremIpsum } from "lorem-ipsum";
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "lets-hassel-node-plugin" is now active!');
@@ -91,7 +92,143 @@ export function activate(context: vscode.ExtensionContext) {
 	
 	});
 
-	context.subscriptions.push(commandSetup, commandInstallMacOS, commandInstallDebian);
+	let commandloremIpsumWord = vscode.commands.registerCommand('extension.loremIpsumWord', async () => {
+		
+		const count = await vscode.window.showInputBox({prompt: "How many words should be generated?"});
+		if (String(count) === 'undefined') {
+			vscode.window.showErrorMessage('Action canceled!');
+			return;
+		}
+
+			if (vscode.window.activeTextEditor) {
+
+				let editor = vscode.window.activeTextEditor;
+				let document = editor.document;
+				let selection = editor.selection;
+
+				// 1) Get the configured glob pattern value for the current file
+				const format: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.format');
+				const paragraphLowerBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.minSentencePerParagraph');
+				const paragraphUpperBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.maxSentencePerParagraph');
+				const sentenceLowerBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.minWordsPerSentence');
+				const sentenceUpperBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.maxWordsPerSentence');
+
+				const text = loremIpsum({
+					count: Number(count),                // Number of "words", "sentences", or "paragraphs"
+					format: format,         // "plain" or "html"
+					paragraphLowerBound: paragraphLowerBound,  // Min. number of sentences per paragraph.
+					paragraphUpperBound: paragraphUpperBound,  // Max. number of sentences per paragarph.
+					sentenceLowerBound: sentenceLowerBound,   // Min. number of words per sentence.
+					sentenceUpperBound: sentenceUpperBound,  // Max. number of words per sentence.
+					units: "words",      // paragraph(s), "sentence(s)", or "word(s)"
+				});
+
+
+	
+			editor.edit(editBuilder => {
+				if (editor.selection.isEmpty) {
+					// the Position object gives you the line and character where the cursor is
+					const position = editor.selection.active;
+					editBuilder.insert(position, text);
+				} else {
+					editBuilder.replace(selection, text);
+				}
+			});
+		}
+	});
+
+	let commandloremIpsumSentence = vscode.commands.registerCommand('extension.loremIpsumSentence', async () => {
+		
+		const count = await vscode.window.showInputBox({prompt: "How many sentences should be generated?"});
+		if (String(count) === 'undefined') {
+			vscode.window.showErrorMessage('Action canceled!');
+			return;
+		}
+		if (vscode.window.activeTextEditor) {
+
+			let editor = vscode.window.activeTextEditor;
+			let document = editor.document;
+			let selection = editor.selection;
+
+			// 1) Get the configured glob pattern value for the current file
+			const format: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.format');
+			const paragraphLowerBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.minSentencePerParagraph');
+			const paragraphUpperBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.maxSentencePerParagraph');
+			const sentenceLowerBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.minWordsPerSentence');
+			const sentenceUpperBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.maxWordsPerSentence');
+
+			const text = loremIpsum({
+				count: Number(count),                // Number of "words", "sentences", or "paragraphs"
+				format: format,         // "plain" or "html"
+				paragraphLowerBound: paragraphLowerBound,  // Min. number of sentences per paragraph.
+				paragraphUpperBound: paragraphUpperBound,  // Max. number of sentences per paragarph.
+				sentenceLowerBound: sentenceLowerBound,   // Min. number of words per sentence.
+				sentenceUpperBound: sentenceUpperBound,  // Max. number of words per sentence.
+				units: "sentences",      // paragraph(s), "sentence(s)", or "word(s)"
+			});
+
+
+
+		editor.edit(editBuilder => {
+			if (editor.selection.isEmpty) {
+				// the Position object gives you the line and character where the cursor is
+				const position = editor.selection.active;
+				editBuilder.insert(position, text);
+			} else {
+				editBuilder.replace(selection, text);
+			}
+		});
+	}
+	
+	});
+
+	let commandloremIpsunParagraph = vscode.commands.registerCommand('extension.loremIpsunParagraph', async () => {
+		
+		const count = await vscode.window.showInputBox({prompt: "How many paragraphs should be generated?"});
+		if (String(count) === 'undefined') {
+			vscode.window.showErrorMessage('Action canceled!');
+			return;
+		}
+
+		if (vscode.window.activeTextEditor) {
+
+			let editor = vscode.window.activeTextEditor;
+			let document = editor.document;
+			let selection = editor.selection;
+
+			// 1) Get the configured glob pattern value for the current file
+			const format: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.format');
+			const paragraphLowerBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.minSentencePerParagraph');
+			const paragraphUpperBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.maxSentencePerParagraph');
+			const sentenceLowerBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.minWordsPerSentence');
+			const sentenceUpperBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.maxWordsPerSentence');
+
+			const text = loremIpsum({
+				count: Number(count),                // Number of "words", "sentences", or "paragraphs"
+				format: format,         // "plain" or "html"
+				paragraphLowerBound: paragraphLowerBound,  // Min. number of sentences per paragraph.
+				paragraphUpperBound: paragraphUpperBound,  // Max. number of sentences per paragarph.
+				sentenceLowerBound: sentenceLowerBound,   // Min. number of words per sentence.
+				sentenceUpperBound: sentenceUpperBound,  // Max. number of words per sentence.
+				units: "paragraphs",      // paragraph(s), "sentence(s)", or "word(s)"
+			});
+
+
+
+		editor.edit(editBuilder => {
+			if (editor.selection.isEmpty) {
+				// the Position object gives you the line and character where the cursor is
+				const position = editor.selection.active;
+				editBuilder.insert(position, text);
+			} else {
+				editBuilder.replace(selection, text);
+			}
+		});
+	}
+	
+	});
+
+	context.subscriptions.push(commandSetup, commandInstallMacOS, commandInstallDebian, commandloremIpsumWord, commandloremIpsumSentence, commandloremIpsunParagraph);
 }
 
 export function deactivate() {}
