@@ -30,8 +30,15 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
     * [Configuration](#lorem-config)
     * [Usage](#lorem-usage)
     * [Commands](#lorem-cmds)
+  * [WSS File Generator](#wss-file-generator)
+    * [Configuration](#wss-config)
+    * [Usage](#wss-usage)
+    * [Commands](#wss-cmds)
 * [Troubleshooting](#troubleshooting)
 * [Release Notes](https://github.com/craftycram/lets-hassel/blob/master/CHANGELOG.md)
+
+> If the links aren't working properly try viewing the docs on [GitHub](https://github.com/craftycram/lets-hassel/).
+If the problem is still there you can create an issue.
 
 
 ## Requirements
@@ -230,6 +237,42 @@ This command creates a random LoremIpsum text with a given amount of sentences.
 
 **3. Generate a specified amount of paragraphs**  
 This command creates a random LoremIpsum text with a given amount of paragraphs.
+
+### WSS File Generator
+
+You can use this feature to create the file structure used in the lessons of one of our lecturers.
+
+<a name="wss-config"></a>
+#### Configuration
+
+You can change some of the generators settings in the `VS Code settings` under `Extensions > Let's Hassel`.  
+Make sure that you configured it properly before first use!
+
+##### Settings:
+
+1. Filename:  
+This specifies how the file will be named.
+
+2. Filenumber:  
+The number added to the end of the file.
+
+> You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
+
+
+<a name="wss-usage"></a>
+#### Usage
+
+1. Open VS Code in a folder.
+2. Open the `Command Palette` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd> or via the menu `View > Command Palette`.
+3. Type one of the available commands. [[Commands](#wss-cmds)]
+5. Confirm with <kbd>&#x23ce; Return</kbd>.
+
+
+<a name="wss-cmds"></a>
+#### Commands
+
+**1. Create WSS files. (HTML & CSS)**  
+This command creates a HTML and CCS file linked with each other with the nomenclature of WSS.
 
 
 ## Troubleshooting

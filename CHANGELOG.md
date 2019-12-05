@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
+## [5.0.0] - 2019-12-05
+### Added
+- WSS file generator.
+- WSS file generator instructions in documentation.
+- Table of Contents hyperlink tipp.
+
 ## [4.0.0] - 2019-12-02
 ### Added
 - LoremIpsum generator.

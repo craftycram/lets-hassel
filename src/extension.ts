@@ -1,8 +1,17 @@
 import * as vscode from 'vscode';
-import { formatWithOptions } from 'util';
-import { open } from 'fs';
-import { pathToFileURL, fileURLToPath } from 'url';
-import { loremIpsum } from "lorem-ipsum";
+import {
+	formatWithOptions
+} from 'util';
+import {
+	open
+} from 'fs';
+import {
+	pathToFileURL,
+	fileURLToPath
+} from 'url';
+import {
+	loremIpsum
+} from "lorem-ipsum";
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log('Congratulations, your extension "lets-hassel-node-plugin" is now active!');
@@ -17,20 +26,25 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// Create terminal
 		const terminal = vscode.window.createTerminal({
-			name: `Terminal #${NEXT_TERM_ID++}`,
-			hideFromUser: true
-		} as any);
+				name: `Terminal #${NEXT_TERM_ID++}`,
+				hideFromUser: true
+			} as any);
 
 		terminal.sendText("mkdir src");
 		terminal.sendText("touch src/index.js");
 
-		const nvm_version = await vscode.window.showInputBox({prompt: "Which Node.js version should be used?", placeHolder: "e.g. 13"});
+		const nvm_version = await vscode.window.showInputBox({
+			prompt: "Which Node.js version should be used?",
+			placeHolder: "e.g. 13"
+		});
 		if (String(nvm_version) === 'undefined') {
 			vscode.window.showErrorMessage('Action canceled!');
 			return;
 		}
 
-		const author = await vscode.window.showInputBox({prompt: "Please enter the authors name."});
+		const author = await vscode.window.showInputBox({
+			prompt: "Please enter the authors name."
+		});
 		if (String(author) === 'undefined') {
 			vscode.window.showErrorMessage('Action canceled!');
 			return;
@@ -68,12 +82,12 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// Create terminal
 		const terminal = vscode.window.createTerminal({
-			name: `Terminal #${NEXT_TERM_ID++}`,
-			hideFromUser: false
-		} as any);
+				name: `Terminal #${NEXT_TERM_ID++}`,
+				hideFromUser: false
+			}	as any);
 
 		terminal.sendText("brew install jq");
-	
+
 	});
 
 	let commandInstallDebian = vscode.commands.registerCommand('extension.installDebian', async () => {
@@ -84,47 +98,49 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// Create terminal
 		const terminal = vscode.window.createTerminal({
-			name: `Terminal #${NEXT_TERM_ID++}`,
-			hideFromUser: false
-		} as any);
+				name: `Terminal #${NEXT_TERM_ID++}`,
+				hideFromUser: false
+			} as any);
 
 		terminal.sendText("sudo apt-get install jq");
-	
+
 	});
 
 	let commandloremIpsumWord = vscode.commands.registerCommand('extension.loremIpsumWord', async () => {
-		
-		const count = await vscode.window.showInputBox({prompt: "How many words should be generated?"});
+
+		const count = await vscode.window.showInputBox({
+			prompt: "How many words should be generated?"
+		});
 		if (String(count) === 'undefined') {
 			vscode.window.showErrorMessage('Action canceled!');
 			return;
 		}
 
-			if (vscode.window.activeTextEditor) {
+		if (vscode.window.activeTextEditor) {
 
-				let editor = vscode.window.activeTextEditor;
-				let document = editor.document;
-				let selection = editor.selection;
+			let editor = vscode.window.activeTextEditor;
+			let document = editor.document;
+			let selection = editor.selection;
 
-				// 1) Get the configured glob pattern value for the current file
-				const format: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.format');
-				const paragraphLowerBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.minSentencePerParagraph');
-				const paragraphUpperBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.maxSentencePerParagraph');
-				const sentenceLowerBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.minWordsPerSentence');
-				const sentenceUpperBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.maxWordsPerSentence');
+			// 1) Get the configured glob pattern value for the current file
+			const format: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.format');
+			const paragraphLowerBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.minSentencePerParagraph');
+			const paragraphUpperBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.maxSentencePerParagraph');
+			const sentenceLowerBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.minWordsPerSentence');
+			const sentenceUpperBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.maxWordsPerSentence');
 
-				const text = loremIpsum({
-					count: Number(count),                // Number of "words", "sentences", or "paragraphs"
-					format: format,         // "plain" or "html"
-					paragraphLowerBound: paragraphLowerBound,  // Min. number of sentences per paragraph.
-					paragraphUpperBound: paragraphUpperBound,  // Max. number of sentences per paragarph.
-					sentenceLowerBound: sentenceLowerBound,   // Min. number of words per sentence.
-					sentenceUpperBound: sentenceUpperBound,  // Max. number of words per sentence.
-					units: "words",      // paragraph(s), "sentence(s)", or "word(s)"
-				});
+			const text = loremIpsum({
+				count: Number(count), // Number of "words", "sentences", or "paragraphs"
+				format: format, // "plain" or "html"
+				paragraphLowerBound: paragraphLowerBound, // Min. number of sentences per paragraph.
+				paragraphUpperBound: paragraphUpperBound, // Max. number of sentences per paragarph.
+				sentenceLowerBound: sentenceLowerBound, // Min. number of words per sentence.
+				sentenceUpperBound: sentenceUpperBound, // Max. number of words per sentence.
+				units: "words", // paragraph(s), "sentence(s)", or "word(s)"
+			});
 
 
-	
+
 			editor.edit(editBuilder => {
 				if (editor.selection.isEmpty) {
 					// the Position object gives you the line and character where the cursor is
@@ -138,8 +154,10 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	let commandloremIpsumSentence = vscode.commands.registerCommand('extension.loremIpsumSentence', async () => {
-		
-		const count = await vscode.window.showInputBox({prompt: "How many sentences should be generated?"});
+
+		const count = await vscode.window.showInputBox({
+			prompt: "How many sentences should be generated?"
+		});
 		if (String(count) === 'undefined') {
 			vscode.window.showErrorMessage('Action canceled!');
 			return;
@@ -158,33 +176,35 @@ export function activate(context: vscode.ExtensionContext) {
 			const sentenceUpperBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.maxWordsPerSentence');
 
 			const text = loremIpsum({
-				count: Number(count),                // Number of "words", "sentences", or "paragraphs"
-				format: format,         // "plain" or "html"
-				paragraphLowerBound: paragraphLowerBound,  // Min. number of sentences per paragraph.
-				paragraphUpperBound: paragraphUpperBound,  // Max. number of sentences per paragarph.
-				sentenceLowerBound: sentenceLowerBound,   // Min. number of words per sentence.
-				sentenceUpperBound: sentenceUpperBound,  // Max. number of words per sentence.
-				units: "sentences",      // paragraph(s), "sentence(s)", or "word(s)"
+				count: Number(count), // Number of "words", "sentences", or "paragraphs"
+				format: format, // "plain" or "html"
+				paragraphLowerBound: paragraphLowerBound, // Min. number of sentences per paragraph.
+				paragraphUpperBound: paragraphUpperBound, // Max. number of sentences per paragarph.
+				sentenceLowerBound: sentenceLowerBound, // Min. number of words per sentence.
+				sentenceUpperBound: sentenceUpperBound, // Max. number of words per sentence.
+				units: "sentences", // paragraph(s), "sentence(s)", or "word(s)"
 			});
 
 
 
-		editor.edit(editBuilder => {
-			if (editor.selection.isEmpty) {
-				// the Position object gives you the line and character where the cursor is
-				const position = editor.selection.active;
-				editBuilder.insert(position, text);
-			} else {
-				editBuilder.replace(selection, text);
-			}
-		});
-	}
-	
+			editor.edit(editBuilder => {
+				if (editor.selection.isEmpty) {
+					// the Position object gives you the line and character where the cursor is
+					const position = editor.selection.active;
+					editBuilder.insert(position, text);
+				} else {
+					editBuilder.replace(selection, text);
+				}
+			});
+		}
+
 	});
 
 	let commandloremIpsunParagraph = vscode.commands.registerCommand('extension.loremIpsunParagraph', async () => {
-		
-		const count = await vscode.window.showInputBox({prompt: "How many paragraphs should be generated?"});
+
+		const count = await vscode.window.showInputBox({
+			prompt: "How many paragraphs should be generated?"
+		});
 		if (String(count) === 'undefined') {
 			vscode.window.showErrorMessage('Action canceled!');
 			return;
@@ -204,31 +224,69 @@ export function activate(context: vscode.ExtensionContext) {
 			const sentenceUpperBound: any = vscode.workspace.getConfiguration('', document.uri).get('Let\'sHassel.loremIpsum.maxWordsPerSentence');
 
 			const text = loremIpsum({
-				count: Number(count),                // Number of "words", "sentences", or "paragraphs"
-				format: format,         // "plain" or "html"
-				paragraphLowerBound: paragraphLowerBound,  // Min. number of sentences per paragraph.
-				paragraphUpperBound: paragraphUpperBound,  // Max. number of sentences per paragarph.
-				sentenceLowerBound: sentenceLowerBound,   // Min. number of words per sentence.
-				sentenceUpperBound: sentenceUpperBound,  // Max. number of words per sentence.
-				units: "paragraphs",      // paragraph(s), "sentence(s)", or "word(s)"
+				count: Number(count), // Number of "words", "sentences", or "paragraphs"
+				format: format, // "plain" or "html"
+				paragraphLowerBound: paragraphLowerBound, // Min. number of sentences per paragraph.
+				paragraphUpperBound: paragraphUpperBound, // Max. number of sentences per paragarph.
+				sentenceLowerBound: sentenceLowerBound, // Min. number of words per sentence.
+				sentenceUpperBound: sentenceUpperBound, // Max. number of words per sentence.
+				units: "paragraphs", // paragraph(s), "sentence(s)", or "word(s)"
 			});
 
 
 
-		editor.edit(editBuilder => {
-			if (editor.selection.isEmpty) {
-				// the Position object gives you the line and character where the cursor is
-				const position = editor.selection.active;
-				editBuilder.insert(position, text);
-			} else {
-				editBuilder.replace(selection, text);
-			}
-		});
-	}
-	
+			editor.edit(editBuilder => {
+				if (editor.selection.isEmpty) {
+					// the Position object gives you the line and character where the cursor is
+					const position = editor.selection.active;
+					editBuilder.insert(position, text);
+				} else {
+					editBuilder.replace(selection, text);
+				}
+			});
+		}
+
 	});
 
-	context.subscriptions.push(commandSetup, commandInstallMacOS, commandInstallDebian, commandloremIpsumWord, commandloremIpsumSentence, commandloremIpsunParagraph);
+	let commandWssCreateFiles = vscode.commands.registerCommand('extension.wssCreateFiles', async () => {
+
+			// 1) Get the configured glob pattern value for the current file
+			const filename: any = vscode.workspace.getConfiguration().get('Let\'sHassel.wss.filename');
+			const filenumber: any = vscode.workspace.getConfiguration().get('Let\'sHassel.wss.filenumber');
+
+			let NEXT_TERM_ID = 1;
+			// Create terminal
+			const terminal = await vscode.window.createTerminal({
+					name: `Terminal #${NEXT_TERM_ID++}`,
+					hideFromUser: false
+				}	as any);
+
+			await terminal.sendText(`touch ${filename}${filenumber}.html`);
+			await terminal.sendText(`touch style${filenumber}.css`);
+
+			await terminal.sendText(`echo \"\<\!doctype html\> \" >> ${filename}${filenumber}.html`);
+			await terminal.sendText(`echo \"\<html\> \" >> ${filename}${filenumber}.html`);
+			await terminal.sendText(`echo \"\<head\> \" >> ${filename}${filenumber}.html`);
+			await terminal.sendText(`echo \"\<meta charset=\"utf-8\"\> \" >> ${filename}${filenumber}.html`);
+			await terminal.sendText(`echo \"\<link rel=\"stylesheet\" href=\"style${filenumber}.css\"\> \" >> ${filename}${filenumber}.html`);
+			await terminal.sendText(`echo \"\<title\>\</title\> \" >> ${filename}${filenumber}.html`);
+			await terminal.sendText(`echo \"\</head\> \" >> ${filename}${filenumber}.html`);
+			await terminal.sendText(`echo \"\<body\> \" >> ${filename}${filenumber}.html`);
+			await terminal.sendText(`echo \"\" >> ${filename}${filenumber}.html`);
+			await terminal.sendText(`echo \"\</body\> \" >> ${filename}${filenumber}.html`);
+			await terminal.sendText(`echo \"\</html\> \" >> ${filename}${filenumber}.html`);
+
+			await terminal.sendText(`echo \"/* related to: ${filename}${filenumber}.html */ \" >> style${filenumber}.css`);
+
+			//terminal.sendText("clear");
+			//terminal.dispose();
+
+			const newFilenumber = filenumber + 1;
+			await vscode.workspace.getConfiguration().update('Let\'sHassel.wss.filenumber', newFilenumber, vscode.ConfigurationTarget.Global);
+
+	});
+
+	context.subscriptions.push(commandSetup, commandInstallMacOS, commandInstallDebian, commandloremIpsumWord, commandloremIpsumSentence, commandloremIpsunParagraph, commandWssCreateFiles);
 }
 
 export function deactivate() {}

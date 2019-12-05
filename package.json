@@ -45,6 +45,10 @@
 			{
 				"command": "extension.loremIpsunParagraph",
 				"title": "[Let's Hassel > LoremIpsum] > Generate a specified amount of paragraphs."
+			},
+			{
+				"command": "extension.wssCreateFiles",
+				"title": "[Let's Hassel] > Create WSS files. (HTML & CSS)"
 			}
 		],
 		"snippets": [
@@ -100,6 +104,16 @@
 					"default": 16,
 					"description": "Maximum Words in a Sentence.",
 					"scope": "resource"
+				},
+				"Let'sHassel.wss.filename": {
+					"type": "string",
+					"default": "setNameInConfig",
+					"description": "This will be the filename of the HTML."
+				},
+				"Let'sHassel.wss.filenumber": {
+					"type": "number",
+					"default": 0,
+					"description": "This will be the filenumber of the HTML and CSS."
 				}
 			}
 		}
