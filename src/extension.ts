@@ -264,7 +264,7 @@ export function activate(context: vscode.ExtensionContext) {
 			await terminal.sendText(`touch ${filename}${filenumber}.html`);
 			await terminal.sendText(`touch style${filenumber}.css`);
 
-			await terminal.sendText(`echo \"\<\!doctype html\> \" >> ${filename}${filenumber}.html`);
+			await terminal.sendText(`echo \"\<"'!'"doctype html\>\" >> ${filename}${filenumber}.html`);
 			await terminal.sendText(`echo \"\<html\> \" >> ${filename}${filenumber}.html`);
 			await terminal.sendText(`echo \"\<head\> \" >> ${filename}${filenumber}.html`);
 			await terminal.sendText(`echo \"\<meta charset=\"utf-8\"\> \" >> ${filename}${filenumber}.html`);

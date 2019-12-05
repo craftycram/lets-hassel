@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
+## [5.0.1] - 2019-12-05
+### Fixed
+- Fixed WSS function (!doctype).
+
 ## [5.0.0] - 2019-12-05
 ### Added
 - WSS file generator.
