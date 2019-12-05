@@ -256,6 +256,9 @@ This specifies how the file will be named.
 2. Filenumber:  
 The number added to the end of the file.
 
+3. Title:
+The title of your HTML document, visible in the browser.
+
 > You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
 
 

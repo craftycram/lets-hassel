@@ -114,6 +114,11 @@
 					"type": "number",
 					"default": 0,
 					"description": "This will be the filenumber of the HTML and CSS."
+				},
+				"Let'sHassel.wss.title": {
+					"type": "String",
+					"default": "setTitleInConfig",
+					"description": "This will be the title visible in the browser."
 				}
 			}
 		}
@@ -137,6 +142,7 @@
 		"vscode-test": "^1.2.2"
 	},
 	"dependencies": {
+		"fs": "0.0.1-security",
 		"lorem-ipsum": "^2.0.3"
 	}
 }
