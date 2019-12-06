@@ -1,7 +1,4 @@
 import * as vscode from "vscode";
-import { formatWithOptions, isError } from "util";
-import { open, unwatchFile } from "fs";
-import { pathToFileURL, fileURLToPath } from "url";
 import { loremIpsum } from "lorem-ipsum";
 
 const fs = require("fs-extra");
