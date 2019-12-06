@@ -1,148 +1,151 @@
 {
-	"name": "lets-hassel",
-	"displayName": "Let's Hassel",
-	"description": "A extension which adds snippets for a bunch of programming languages. Used in the programming classes @HfG",
-	"version": "5.0.1",
-	"publisher": "craftycram",
-	"icon": "res/logo-let-s-hassel.png",
-	"engines": {
-		"vscode": "^1.40.0"
-	},
-	"categories": [
-		"Snippets",
-		"Other"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/craftycram/lets-hassel.git"
-	},
-	"activationEvents": [
-		"*"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "extension.setupNode",
-				"title": "[Let's Hassel] > Setup Node.js project in this folder"
-			},
-			{
-				"command": "extension.installMacOS",
-				"title": "[Let's Hassel] > Install required tools (MacOS)"
-			},
-			{
-				"command": "extension.installDebian",
-				"title": "[Let's Hassel] > Install required tools (Debian)"
-			},
-			{
-				"command": "extension.loremIpsumWord",
-				"title": "[Let's Hassel > LoremIpsum] > Generate a specified amount of words."
-			},
-			{
-				"command": "extension.loremIpsumSentence",
-				"title": "[Let's Hassel > LoremIpsum] > Generate a specified amount of sentences."
-			},
-			{
-				"command": "extension.loremIpsunParagraph",
-				"title": "[Let's Hassel > LoremIpsum] > Generate a specified amount of paragraphs."
-			},
-			{
-				"command": "extension.wssCreateFiles",
-				"title": "[Let's Hassel] > Create WSS files. (HTML & CSS)"
-			}
-		],
-		"snippets": [
-			{
-				"language": "javascript",
-				"path": "./snippets/js.json"
-			},
-			{
-				"language": "svg",
-				"path": "./snippets/svg.json"
-			},
-			{
-				"language": "html",
-				"path": "./snippets/html.json"
-			}
-		],
-		"configuration": {
-			"title": "Let's Hassel",
-			"properties": {
-				"Let'sHassel.loremIpsum.format": {
-					"type": "string",
-					"default": "html",
-					"enum": [
-						"html",
-						"plain"
-					],
-					"enumDescriptions": [
-						"creates plain text",
-						"creates text in HTML style"
-					],
-					"scope": "resource"
-				},
-				"Let'sHassel.loremIpsum.minSentencePerParagraph": {
-					"type": "number",
-					"default": 4,
-					"description": "Minimum Sentences in a Paragraph.",
-					"scope": "resource"
-				},
-				"Let'sHassel.loremIpsum.maxSentencePerParagraph": {
-					"type": "number",
-					"default": 8,
-					"description": "Maximum Sentences in a Paragraph.",
-					"scope": "resource"
-				},
-				"Let'sHassel.loremIpsum.minWordsPerSentence": {
-					"type": "number",
-					"default": 4,
-					"description": "Minimum Words in a Sentence.",
-					"scope": "resource"
-				},
-				"Let'sHassel.loremIpsum.maxWordsPerSentence": {
-					"type": "number",
-					"default": 16,
-					"description": "Maximum Words in a Sentence.",
-					"scope": "resource"
-				},
-				"Let'sHassel.wss.filename": {
-					"type": "string",
-					"default": "setNameInConfig",
-					"description": "This will be the filename of the HTML."
-				},
-				"Let'sHassel.wss.filenumber": {
-					"type": "number",
-					"default": 0,
-					"description": "This will be the filenumber of the HTML and CSS."
-				},
-				"Let'sHassel.wss.title": {
-					"type": "String",
-					"default": "setTitleInConfig",
-					"description": "This will be the title visible in the browser."
-				}
-			}
-		}
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^5.2.7",
-		"@types/node": "^12.11.7",
-		"@types/vscode": "^1.40.0",
-		"glob": "^7.1.5",
-		"mocha": "^6.2.2",
-		"typescript": "^3.6.4",
-		"tslint": "^5.20.0",
-		"vscode-test": "^1.2.2"
-	},
-	"dependencies": {
-		"fs": "0.0.1-security",
-		"lorem-ipsum": "^2.0.3"
-	}
+    "name": "lets-hassel",
+    "displayName": "Let's Hassel",
+    "description": "A extension which adds snippets for a bunch of programming languages. Used in the programming classes @HfG",
+    "version": "5.0.1",
+    "publisher": "craftycram",
+    "icon": "res/logo-let-s-hassel.png",
+    "engines": {
+        "vscode": "^1.40.0"
+    },
+    "categories": [
+        "Snippets",
+        "Other"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/craftycram/lets-hassel.git"
+    },
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.setupNode",
+                "title": "[Let's Hassel] > Setup Node.js project in this folder"
+            },
+            {
+                "command": "extension.installMacOS",
+                "title": "[Let's Hassel] > Install required tools (MacOS)"
+            },
+            {
+                "command": "extension.installDebian",
+                "title": "[Let's Hassel] > Install required tools (Debian)"
+            },
+            {
+                "command": "extension.loremIpsumWord",
+                "title": "[Let's Hassel > LoremIpsum] > Generate a specified amount of words."
+            },
+            {
+                "command": "extension.loremIpsumSentence",
+                "title": "[Let's Hassel > LoremIpsum] > Generate a specified amount of sentences."
+            },
+            {
+                "command": "extension.loremIpsunParagraph",
+                "title": "[Let's Hassel > LoremIpsum] > Generate a specified amount of paragraphs."
+            },
+            {
+                "command": "extension.wssCreateFiles",
+                "title": "[Let's Hassel] > Create WSS files. (HTML & CSS)"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "javascript",
+                "path": "./snippets/js.json"
+            },
+            {
+                "language": "svg",
+                "path": "./snippets/svg.json"
+            },
+            {
+                "language": "html",
+                "path": "./snippets/html.json"
+            }
+        ],
+        "configuration": {
+            "title": "Let's Hassel",
+            "properties": {
+                "Let'sHassel.loremIpsum.format": {
+                    "type": "string",
+                    "default": "html",
+                    "enum": [
+                        "html",
+                        "plain"
+                    ],
+                    "enumDescriptions": [
+                        "creates plain text",
+                        "creates text in HTML style"
+                    ],
+                    "scope": "resource"
+                },
+                "Let'sHassel.loremIpsum.minSentencePerParagraph": {
+                    "type": "number",
+                    "default": 4,
+                    "description": "Minimum Sentences in a Paragraph.",
+                    "scope": "resource"
+                },
+                "Let'sHassel.loremIpsum.maxSentencePerParagraph": {
+                    "type": "number",
+                    "default": 8,
+                    "description": "Maximum Sentences in a Paragraph.",
+                    "scope": "resource"
+                },
+                "Let'sHassel.loremIpsum.minWordsPerSentence": {
+                    "type": "number",
+                    "default": 4,
+                    "description": "Minimum Words in a Sentence.",
+                    "scope": "resource"
+                },
+                "Let'sHassel.loremIpsum.maxWordsPerSentence": {
+                    "type": "number",
+                    "default": 16,
+                    "description": "Maximum Words in a Sentence.",
+                    "scope": "resource"
+                },
+                "Let'sHassel.wss.filename": {
+                    "type": "string",
+                    "default": "setNameInConfig",
+                    "description": "This will be the filename of the HTML."
+                },
+                "Let'sHassel.wss.filenumber": {
+                    "type": "number",
+                    "default": 0,
+                    "description": "This will be the filenumber of the HTML and CSS."
+                },
+                "Let'sHassel.wss.title": {
+                    "type": "String",
+                    "default": "setTitleInConfig",
+                    "description": "This will be the title visible in the browser."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.1.1",
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^12.11.7",
+        "@types/vscode": "^1.40.0",
+        "glob": "^7.1.5",
+        "mocha": "^6.2.2",
+        "typescript": "^3.6.4",
+        "tslint": "^5.20.0",
+        "vscode-test": "^1.2.2"
+    },
+    "dependencies": {
+        "fs-extra": "^8.1.0",
+        "lorem-ipsum": "^2.0.3",
+        "mustache": "^3.1.0",
+        "npm-programmatic": "0.0.12",
+        "simple-git": "^1.128.0"
+    }
 }

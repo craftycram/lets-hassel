@@ -28,7 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
             // make sure we really got a workspace
             if (workspace_path === undefined) {
                 vscode.window.showErrorMessage(
-                    "You need to open a workspace first!"
+                    "You have not yet opened a folder!"
                 );
                 return;
             }
@@ -292,6 +292,14 @@ export function activate(context: vscode.ExtensionContext) {
     let commandWssCreateFiles = vscode.commands.registerCommand(
         "extension.wssCreateFiles",
         async () => {
+            // make sure we really got a workspace
+            if (workspace_path === undefined) {
+                vscode.window.showErrorMessage(
+                    "You have not yet opened a folder!"
+                );
+                return;
+            }
+
             // get the configured glob pattern value for the current file
             const filename = vscode.workspace
                 .getConfiguration()
