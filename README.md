@@ -23,7 +23,6 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
     * [HTML](#html)
     * [SVG](#svg)
   * [Node.js Workspace Auto-Setup](#nodejs-workspace-auto-setup)
-    * [Setup](#setup)
     * [Usage](#usage)
     * [Commands](#commands)
   * [LoremIpsum Generator](#loremipsum-generator)
@@ -44,7 +43,6 @@ If the problem is still there you can create an issue.
 ## Requirements
 
 You need Visual Studio Code installed to use this extension.  
-If you want to use the Node.js workspace functionality you also need `jq` installed. The extension supports installing it itself. [[Installation (Tools)](#setup)]
 
 > Install Visual Studio Code: [Official Website](https://code.visualstudio.com/)
 
@@ -138,17 +136,6 @@ This generates the basic SVG structure.
 This feature automatically generates you a basic Node.js workspace structure. It helps you to save time by not having to create all the files and folders each time you start a new project.  
 It creates the main `index.js`, initializes a git repository, installs `eslint` and starts its setup assistant. More details on that under [Usage](#usage)
 
-#### Setup
-
-Before you can use this functionality you need to have `jd` installed. It allows the extension to edit and process `JSON` files from the terminal.  
-To install it you can use the `Command Palette` which can be accessed by <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd>.
-
-There you enter  
-`Install required tools (MacOS)` if you are using Mac or  
-`Install required tools (Debian)` if you are on a Linux system.
-
-Or you can install it manually by following the developers official guide on their [website](https://stedolan.github.io/jq/).
-
 #### Usage
 
 1. Create a new project folder and open it in `VS Code`.
@@ -175,13 +162,7 @@ The created structure will look like this:
 
 #### Commands
 
-**1. Install required tools (MacOS)**  
-This command installs `jd` on your MacOS-based system.
-
-**2. Install required tools (Debian)**  
-This command installs `jd` on your Debian-based system.
-
-**3. Setup Node.js project in this folder**  
+**1. Setup Node.js project in this folder**  
 This command generates a basic Node.js project workspace. [[Details](#usage)]
 
 ### LoremIpsum Generator

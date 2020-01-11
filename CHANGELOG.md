@@ -2,10 +2,20 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
-## [5.0.2] - 2019-12-05
+## [6.0.0] - 2020-01-11
+### Changed
+- Total rewrite by Martin Schneider ([@craftoid](https://github.com/craftoid))
+- All features should be MacOS, Linux and Windows compatible now.
+- Updated the documentation (New features, removed commands).
 ### Added
 - Open document after creating (WSS).
 - Title setting for WSS.
+### Removed
+- jd required to be installed for Node.js setup.
+- Unreleased version (5.0.2) from Changelog.
+- Install commands for jd.
+### Fixed
+- Latest version number in package.json.
 
 ## [5.0.1] - 2019-12-05
 ### Fixed
