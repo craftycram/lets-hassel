@@ -2,7 +2,7 @@
 	"name": "lets-hassel",
 	"displayName": "Let's Hassel",
 	"description": "A extension which adds snippets for a bunch of programming languages. Used in the programming classes @HfG",
-	"version": "5.0.1",
+	"version": "6.0.0",
 	"publisher": "craftycram",
 	"icon": "res/logo-let-s-hassel.png",
 	"engines": {
@@ -21,7 +21,8 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [{
+		"commands": [
+			{
 				"command": "extension.setupNode",
 				"title": "[Let's Hassel] > Setup Node.js project in this folder"
 			},
@@ -42,7 +43,8 @@
 				"title": "[Let's Hassel] > Create WSS files. (HTML & CSS)"
 			}
 		],
-		"snippets": [{
+		"snippets": [
+			{
 				"language": "javascript",
 				"path": "./snippets/js.json"
 			},
