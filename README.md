@@ -160,8 +160,10 @@ The created structure will look like this:
 ├── .eslintrc.json      // eslint config file
 ├── .gitignore          // ignore build output and node_modules
 ├── .nvmrc              // specifies which Node.js version to use
+├── CHANGELOG.md        // changelog file
 ├── package-lock.json   // version history of installed Node.js modules
-└── package.json        // npm configuration file
+├── package.json        // npm configuration file
+└── README.md           // README file
 ```
 
 #### Commands

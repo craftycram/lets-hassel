@@ -76,6 +76,15 @@ export function activate(context: vscode.ExtensionContext) {
 				`v${nvm_version}`
 			);
 
+			// create README.md file
+			fs.writeFileSync(
+				path.join(workspace_path, "README.md"),
+				`# ${path.basename(workspace_path)}`
+			);
+
+			// create CHANGELOG.md file
+			fs.closeSync(fs.openSync(path.join(workspace_path, 'CHANGELOG.md'), "w"));
+
 			// copy .gitignore template
 			const cmd_templates = path.join(templates_path, "setupNode");
 			fs.copySync(
