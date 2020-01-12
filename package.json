@@ -21,8 +21,7 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.setupNode",
 				"title": "[Let's Hassel] > Setup Node.js project in this folder"
 			},
@@ -41,10 +40,13 @@
 			{
 				"command": "extension.wssCreateFiles",
 				"title": "[Let's Hassel] > Create WSS files. (HTML & CSS)"
+			},
+			{
+				"command": "extension.webCreateFiles",
+				"title": "[Let's Hassel] > Create web files. (index.html + style.css)"
 			}
 		],
-		"snippets": [
-			{
+		"snippets": [{
 				"language": "javascript",
 				"path": "./snippets/js.json"
 			},
@@ -107,7 +109,7 @@
 					"default": 0,
 					"description": "This will be the filenumber of the HTML and CSS."
 				},
-				"Let'sHassel.wss.title": {
+				"Let'sHassel.web.title": {
 					"type": "string",
 					"default": "setTitleInConfig",
 					"description": "This will be the title visible in the browser."

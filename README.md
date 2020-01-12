@@ -29,6 +29,10 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
     * [Configuration](#lorem-config)
     * [Usage](#lorem-usage)
     * [Commands](#lorem-cmds)
+  * [Web File Generator](#web-file-generator)
+    * [Configuration](#web-config)
+    * [Usage](#web-usage)
+    * [Commands](#web-cmds)
   * [WSS File Generator](#wss-file-generator)
     * [Configuration](#wss-config)
     * [Usage](#wss-usage)
@@ -61,7 +65,7 @@ The extension can be installed via the `VS Code Extension Manager`.
 ## Features
 
 Once you created a file of one of the supported types or languages you can auto-generate different code blocks by typing `!`and the shortname which you can find in these docs below.
-You can also use this extension to automatically generate a basic Node.js workspace. Instructions on how that feature can be used can be found in these docs as well.
+You can also use this extension to automatically generate loremipsum text, a basic Node.js workspace and other project files. Instructions on how that feature can be used can be found in these docs as well.
 
 
 ### Supported Programming Languages & File Types
@@ -219,6 +223,41 @@ This command creates a random LoremIpsum text with a given amount of sentences.
 **3. Generate a specified amount of paragraphs**  
 This command creates a random LoremIpsum text with a given amount of paragraphs.
 
+### Web File Generator
+
+You can use this feature to create a basic website structure consisting of a `index.html` and `style.css`.
+
+<a name="web-config"></a>
+#### Configuration
+
+You can change some of the generators settings in the `VS Code settings` under `Extensions > Let's Hassel`.  
+Make sure that you configured it properly before first use!
+
+##### Settings:
+
+1. Title:
+The title of your HTML document, visible in the browser.  
+(Also used by the WSS generator)
+
+> You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
+
+
+<a name="web-usage"></a>
+#### Usage
+
+1. Open VS Code in a folder.
+2. Open the `Command Palette` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd> or via the menu `View > Command Palette`.
+3. Type one of the available commands. [[Commands](#web-cmds)]
+5. Confirm with <kbd>&#x23ce; Return</kbd>.
+
+
+<a name="web-cmds"></a>
+#### Commands
+
+**1. Create web files. (index.html + style.css)**  
+This command creates a index.html and style.css file linked with each other.
+
+
 ### WSS File Generator
 
 You can use this feature to create the file structure used in the lessons of one of our lecturers.
@@ -238,7 +277,8 @@ This specifies how the file will be named.
 The number added to the end of the file.
 
 3. Title:
-The title of your HTML document, visible in the browser.
+The title of your HTML document, visible in the browser.  
+(This used the title config of the web generator settings)
 
 > You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
 

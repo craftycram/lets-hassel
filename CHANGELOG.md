@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
+## [7.0.0] - 2020-01-12
+### Added
+- Web file generator (index.html & style.css)
+- Index.html template file (Web files generator)
+- Stylesheet relation note (WSS files generator)
+### Changed
+- Moved title setting to web files generator
+- Updated the documentation (web file generator)
+
 ## [6.0.0] - 2020-01-11
 ### Changed
 - Total rewrite by Martin Schneider ([@craftoid](https://github.com/craftoid))
