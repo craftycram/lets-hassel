@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
+## [7.2.3] - 2020-04-23
+### Fixed
+- git repo initialization (Node.js setup)
+- document line error (Node.js setup)
+### Changed
+- simple-git require
+
 ## [7.2.2] - 2020-04-23
 ### Fixed
 - version number

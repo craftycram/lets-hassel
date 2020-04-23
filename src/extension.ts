@@ -4,7 +4,7 @@ import { loremIpsum } from "lorem-ipsum";
 const fs = require("fs-extra");
 const path = require("path");
 const url = require("url");
-const git = require("simple-git");
+const git = require("simple-git/promise");
 const npm = require("npm-programmatic");
 const mustache = require("mustache");
 
@@ -112,7 +112,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 
 			// init git repo
-			await git().init();
+			await git(workspace_path).init();
 
 			// install eslint
 			await npm.install(["eslint"], {
@@ -136,7 +136,7 @@ export function activate(context: vscode.ExtensionContext) {
 			);
 
 			// jump right into the document
-			const range = editor.document.lineAt(1).range;
+			const range = editor.document.lineAt(0).range;
 			editor.selection = new vscode.Selection(range.end, range.end);
 
 			// let the coding begin!
