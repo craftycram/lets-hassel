@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
+## [7.2.2] - 2020-04-23
+### Fixed
+- version number
+
 ## [7.1.1] - 2020-04-23
 ### Changed
 - simple-git require
