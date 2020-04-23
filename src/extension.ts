@@ -4,7 +4,7 @@ import { loremIpsum } from "lorem-ipsum";
 const fs = require("fs-extra");
 const path = require("path");
 const url = require("url");
-const git = require("simple-git/promise");
+const git = require("simple-git");
 const npm = require("npm-programmatic");
 const mustache = require("mustache");
 
