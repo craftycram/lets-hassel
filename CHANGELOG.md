@@ -5,6 +5,8 @@ These won't exactly match the commit history, they only document the version his
 ## [7.2.4] - 2020-05-12
 ### Security
 - Updated npm packages
+### Changed
+- VSCode Engine support -> 1.45.0
 
 ## [7.2.3] - 2020-04-23
 ### Fixed
