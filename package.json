@@ -6,7 +6,7 @@
 	"publisher": "craftycram",
 	"icon": "res/logo-let-s-hassel.png",
 	"engines": {
-		"vscode": "^1.40.0"
+		"vscode": "^1.45.0"
 	},
 	"categories": [
 		"Snippets",
@@ -21,8 +21,7 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.setupNode",
 				"title": "[Let's Hassel] > Setup Node.js project in this folder"
 			},
@@ -47,8 +46,7 @@
 				"title": "[Let's Hassel] > Create web files. (index.html + style.css)"
 			}
 		],
-		"snippets": [
-			{
+		"snippets": [{
 				"language": "javascript",
 				"path": "./snippets/js.json"
 			},
