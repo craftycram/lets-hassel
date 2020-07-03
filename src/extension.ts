@@ -113,21 +113,14 @@ export function activate(context: vscode.ExtensionContext) {
 
 			// init git repo
 			await git(workspace_path).init();
+			await git(workspace_path).add('./*');
+			await git(workspace_path).commit('initial commit');
 
 			// install eslint
 			await npm.install(["eslint"], {
 				cwd: workspace_path,
 				saveDev: true
 			});
-
-			// start eslint assistant
-			const terminal = await vscode.window.createTerminal({
-				name: `Terminal #${NEXT_TERM_ID++}`,
-				hideFromUser: true
-			} as any);
-
-			await terminal.sendText("npx eslint --init");
-			await terminal.show(true);
 
 			// show the generated index.js
 			const uri = url.pathToFileURL(path.join(workspace_path, 'src/index.js'));
@@ -141,6 +134,15 @@ export function activate(context: vscode.ExtensionContext) {
 
 			// let the coding begin!
 			vscode.window.showInformationMessage("Happy coding ...");
+
+			// start eslint assistant
+			const terminal = await vscode.window.createTerminal({
+				name: `Terminal #${NEXT_TERM_ID++}`,
+				hideFromUser: true
+			} as any);
+
+			await terminal.sendText("npx eslint --init && git add . && git commit -m \"installed & configured npm package eslint\"");
+			await terminal.show(true);
 
 			// jump right into the window, onde it is available
 			const subscription = vscode.window.onDidChangeActiveTextEditor(

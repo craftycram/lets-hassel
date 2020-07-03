@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
+## [7.3.0] - 2020-07-03
+### Added
+- initial commit to node setup
+### Changed
+- node setup order
+
 ## [7.2.4] - 2020-05-12
 ### Security
 - Updated npm packages
