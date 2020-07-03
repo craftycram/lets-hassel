@@ -5,6 +5,8 @@ These won't exactly match the commit history, they only document the version his
 ## [8.0.0] - 2020-07-03
 ### Added
 - RaspberryPi SD-card setup feature (Wifi & SSH)
+### Changed
+- Node setup readme
 
 ## [7.4.0] - 2020-07-03
 ### Added

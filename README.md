@@ -23,6 +23,7 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
     * [HTML](#html)
     * [SVG](#svg)
   * [Node.js Workspace Auto-Setup](#nodejs-workspace-auto-setup)
+    * [Configuration](#node-config)
     * [Usage](#usage)
     * [Commands](#commands)
   * [RaspiSSD Setup](#raspi-ssd-setup)
@@ -169,6 +170,18 @@ The created structure will look like this:
 ├── package.json        // npm configuration file
 └── README.md           // README file
 ```
+
+<a name="node-config"></a>
+#### Configuration
+
+You can change some of the feature settings in the `VS Code settings` under `Extensions > Let's Hassel`.
+
+##### Settings:
+
+1. Eslintconf:
+This decides wether you would like to use the extensions standard configuration for `eslint` or if you would like to configure it on your own each time.
+
+> You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
 
 #### Commands
 
