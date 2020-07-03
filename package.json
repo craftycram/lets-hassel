@@ -21,8 +21,7 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.setupNode",
 				"title": "[Let's Hassel] > Setup Node.js project in this folder"
 			},
@@ -47,8 +46,7 @@
 				"title": "[Let's Hassel] > Create web files. (index.html + style.css)"
 			}
 		],
-		"snippets": [
-			{
+		"snippets": [{
 				"language": "javascript",
 				"path": "./snippets/js.json"
 			},
@@ -64,6 +62,10 @@
 		"configuration": {
 			"title": "Let's Hassel",
 			"properties": {
+				"Let'sHassel.node.eslintconf": {
+					"type": "boolean",
+					"description": "Use Let's Hassel standard eslint config"
+				},
 				"Let'sHassel.loremIpsum.format": {
 					"type": "string",
 					"default": "html",

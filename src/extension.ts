@@ -32,6 +32,10 @@ export function activate(context: vscode.ExtensionContext) {
 				return;
 			}
 
+			const eslintconf: any = vscode.workspace
+				.getConfiguration("Let'sHassel.node")
+				.get("eslintconf");
+
 			// show alert
 			vscode.window.showInformationMessage("Setting up");
 
@@ -141,8 +145,26 @@ export function activate(context: vscode.ExtensionContext) {
 				hideFromUser: true
 			} as any);
 
-			await terminal.sendText("npx eslint --init && git add . && git commit -m \"installed & configured npm package eslint\"");
-			await terminal.show(true);
+			if (eslintconf) {
+
+				await npm.install(["eslint-config-airbnb-base", "eslint-plugin-import"], {
+					cwd: workspace_path,
+					saveDev: true
+				});
+
+				// copy .eslintrc template
+				fs.copySync(
+					path.join(cmd_templates, "eslintrc-auto.json"),
+					path.join(workspace_path, ".eslintrc.json")
+				);
+
+				git(workspace_path).add('./*');
+				git(workspace_path).commit('installed & configured npm package eslint');
+
+			} else {
+				await terminal.sendText("npx eslint --init && git add . && git commit -m \"installed & configured npm package eslint\"");
+				await terminal.show(true);
+			}
 
 			// jump right into the window, onde it is available
 			const subscription = vscode.window.onDidChangeActiveTextEditor(
