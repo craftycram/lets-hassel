@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
+## [8.1.0] - 2020-07-03
+### Added
+- RaspberryPi SD-card setup status message
+
 ## [8.0.0] - 2020-07-03
 ### Added
 - RaspberryPi SD-card setup feature (Wifi & SSH)

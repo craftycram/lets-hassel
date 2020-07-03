@@ -559,7 +559,8 @@ export function activate(context: vscode.ExtensionContext) {
 			// create html file
 			fs.writeFileSync(path.join(workspace_path, 'wpa_supplicant.conf'), wpa_supplicant_render);
 
-
+			// done
+			vscode.window.showInformationMessage("Files created. You can eject your sd card now.");
 		}
 	);
 
