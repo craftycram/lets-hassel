@@ -21,8 +21,7 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.setupNode",
 				"title": "[Let's Hassel] > Setup Node.js project in this folder"
 			},
@@ -45,10 +44,13 @@
 			{
 				"command": "extension.webCreateFiles",
 				"title": "[Let's Hassel] > Create web files. (index.html + style.css)"
+			},
+			{
+				"command": "extension.setupRaspiSdCard",
+				"title": "[Let's Hassel] > Setup RaspberryPi SD Card. (Wifi & SSH config)"
 			}
 		],
-		"snippets": [
-			{
+		"snippets": [{
 				"language": "javascript",
 				"path": "./snippets/js.json"
 			},
@@ -119,6 +121,11 @@
 					"type": "string",
 					"default": "setTitleInConfig",
 					"description": "This will be the title visible in the browser."
+				},
+				"Let'sHassel.raspi.countrycode": {
+					"type": "string",
+					"default": "DE",
+					"description": "Please set your local wifi coutry code."
 				}
 			}
 		}

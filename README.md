@@ -25,6 +25,10 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
   * [Node.js Workspace Auto-Setup](#nodejs-workspace-auto-setup)
     * [Usage](#usage)
     * [Commands](#commands)
+  * [RaspiSSD Setup](#raspi-ssd-setup)
+    * [Configuration](#raspi-config)
+    * [Usage](#raspi-usage)
+    * [Commands](#raspi-cmds)
   * [LoremIpsum Generator](#loremipsum-generator)
     * [Configuration](#lorem-config)
     * [Usage](#lorem-usage)
@@ -170,6 +174,40 @@ The created structure will look like this:
 
 **1. Setup Node.js project in this folder**  
 This command generates a basic Node.js project workspace. [[Details](#usage)]
+
+<a name="raspi-ssd-setup"></a>
+### RaspberryPi SD Setup (Wifi & SSH)
+
+This feature generates the files needed for Wifi & SSH access on your RaspberryPi after flashing a new SD card.
+
+<a name="raspi-config"></a>
+#### Configuration
+
+You can change some of the generators settings in the `VS Code settings` under `Extensions > Let's Hassel`.
+
+##### Settings:
+
+1. Country code:
+The country code of your local wifi.
+
+> You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
+
+<a name="raspi-usage"></a>
+#### Usage
+
+1. Flash your SD card with a RaspberryPiOS image and open the boot partition in `VS Code`.
+2. Open the `Command Palette` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd> or via the menu `View > Command Palette`.
+3. Enter `Setup RaspberryPi SD Card. (Wifi & SSH config)`
+4. A input box will show up. Enter the wifi name you want the Pi to connect to.
+5. A input box will show up. Enter the corresponding wifi password.
+6. The files will be generated and automatically saved to your sd.
+7. Your sd card is ready to go.
+
+<a name="raspi-cmds"></a>
+#### Commands
+
+**1. Setup RaspberryPi SD Card. (Wifi & SSH config)**  
+This command creates the files necessary to connect to a new flashed raspi via wifi and SSH.
 
 ### LoremIpsum Generator
 
