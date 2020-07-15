@@ -21,8 +21,7 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"commands": [
-			{
+		"commands": [{
 				"command": "extension.setupNode",
 				"title": "[Let's Hassel] > Setup Node.js project in this folder"
 			},
@@ -51,8 +50,7 @@
 				"title": "[Let's Hassel] > Setup RaspberryPi SD Card. (Wifi & SSH config)"
 			}
 		],
-		"snippets": [
-			{
+		"snippets": [{
 				"language": "javascript",
 				"path": "./snippets/js.json"
 			},
@@ -128,6 +126,10 @@
 					"type": "string",
 					"default": "DE",
 					"description": "Please set your local wifi coutry code."
+				},
+				"Let'sHassel.raspi.workspacecheck": {
+					"type": "boolean",
+					"description": "This disables the workspace check."
 				}
 			}
 		}

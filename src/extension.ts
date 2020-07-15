@@ -507,16 +507,24 @@ export function activate(context: vscode.ExtensionContext) {
 	let commandRaspiSetupSD = vscode.commands.registerCommand(
 		"extension.setupRaspiSdCard",
 		async () => {
-			if (workspace_path === undefined) {
-				vscode.window.showErrorMessage(
-					"You have not yet opened a folder!"
-				);
-				return;
-			} else if (vscode.workspace.name !== 'boot') {
-				vscode.window.showErrorMessage(
-					"Please open you're RaspberryPi boot drive folder for that feature to work!"
-				);
-				return;
+
+			const workspaceCheck: any = vscode.workspace
+				.getConfiguration("Let'sHassel.raspi")
+				.get("workspacecheck");
+
+			if (!workspaceCheck) {
+				if (workspace_path === undefined) {
+					vscode.window.showErrorMessage(
+						"You have not yet opened a folder!"
+					);
+					return;
+
+				} else if (vscode.workspace.name !== 'boot') {
+					vscode.window.showErrorMessage(
+						"Please open you're RaspberryPi boot drive folder for that feature to work!"
+					);
+					return;
+				}
 			}
 
 			const ssid = await vscode.window.showInputBox({

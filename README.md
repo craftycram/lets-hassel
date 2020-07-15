@@ -203,6 +203,9 @@ You can change some of the generators settings in the `VS Code settings` under `
 1. Country code:
 The country code of your local wifi.
 
+2. Workspace check:
+If this is enabled the directory check will be disabled.
+
 > You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
 
 <a name="raspi-usage"></a>
