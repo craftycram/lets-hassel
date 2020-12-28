@@ -115,7 +115,6 @@ export function activate(context: vscode.ExtensionContext) {
 				JSON.stringify(package_json, null, 4)
 			);
 
-
 			// init git repo
 			await git(workspace_path).init();
 			await git(workspace_path).add('./*');
@@ -154,13 +153,13 @@ export function activate(context: vscode.ExtensionContext) {
 				});
 
 				// copy .eslintrc template
-				fs.copySync(
-					path.join(cmd_templates, "eslintrc-auto.json"),
+				await fs.copySync(
+					path.join(cmd_templates, "../generic/eslintrc-auto.json"),
 					path.join(workspace_path, ".eslintrc.json")
 				);
 
-				git(workspace_path).add('./*');
-				git(workspace_path).commit('installed & configured npm package eslint');
+				await git(workspace_path).add('./*');
+				await git(workspace_path).commit('installed & configured npm package eslint');
 
 			} else {
 				await terminal.sendText("npx eslint --init && git add . && git commit -m \"installed & configured npm package eslint\"");
