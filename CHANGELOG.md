@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
 
+## [9.1.0] - 2020-12-28
+
+### Added
+- Progress bar to Node setup
+### Fixed
+- changelog wrong version
+
 ## [9.0.1] - 2020-12-28
 ### Fixed
 - dependabot lodash bump
