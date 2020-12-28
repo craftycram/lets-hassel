@@ -26,6 +26,10 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
     * [Configuration](#node-config)
     * [Usage](#usage)
     * [Commands](#commands)
+  * [electron.js Workspace Auto-Setup](#electronjs-workspace-auto-setup)
+    * [Configuration](#electron-config)
+    * [Usage](#electron-usage)
+    * [Commands](#electron-commands)
   * [RaspiSSD Setup](#raspi-ssd-setup)
     * [Configuration](#raspi-config)
     * [Usage](#raspi-usage)
@@ -187,6 +191,56 @@ This decides wether you would like to use the extensions standard configuration 
 
 **1. Setup Node.js project in this folder**  
 This command generates a basic Node.js project workspace. [[Details](#usage)]
+
+### Electron.js Workspace Auto-Setup
+
+This feature automatically generates you a basic Electron.js workspace structure. It helps you to save time by not having to create all the files and folders each time you start a new project.  
+It creates the main `main.js` & `index.html`, initializes a git repository, installs `eslint` and starts its setup assistant. More details on that under [Usage](#usage)
+
+<a name="electron-usage"></a>
+#### Usage
+
+1. Create a new project folder and open it in `VS Code`.
+2. Open the `Command Palette` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd> or via the menu `View > Command Palette`.
+3. Enter `Setup electron.js project in this folder`
+4. A input box will show up. Enter which Node.js version you want to use.
+5. A input box will show up. Enter your name or the one that should be shown as the author.
+6. In the terminal the installation/initialisation progress will start.
+7. Once it's finished the `eslint` configuration assistant will start and simplify the configuration for you.
+8. Your workspace is ready to go.
+
+The created structure will look like this:
+```
+.
+├── node_modules        // installed Node.js modules
+├── src
+│   ├── main.js         // main electron.js file
+│   └── index.html      // main electron.js window html file
+├── .eslintrc.json      // eslint config file
+├── .gitignore          // ignore build output and node_modules
+├── .nvmrc              // specifies which Node.js version to use
+├── CHANGELOG.md        // changelog file
+├── package-lock.json   // version history of installed Node.js modules
+├── package.json        // npm configuration file
+└── README.md           // README file
+```
+
+<a name="electron-config"></a>
+#### Configuration
+
+You can change some of the feature settings in the `VS Code settings` under `Extensions > Let's Hassel`.
+
+##### Settings:
+
+1. Eslintconf:
+This decides wether you would like to use the extensions standard configuration for `eslint` or if you would like to configure it on your own each time.
+
+> You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
+
+#### Commands
+
+**1. Setup electron.js project in this folder**  
+This command generates a basic electron.js project workspace. [[Details](#usage)]
 
 <a name="raspi-ssd-setup"></a>
 ### RaspberryPi SD Setup (Wifi & SSH)
