@@ -27,6 +27,10 @@
 				"title": "[Let's Hassel] > Setup Node.js project in this folder"
 			},
 			{
+				"command": "extension.setupElectron",
+				"title": "[Let's Hassel] > Setup electron.js project in this folder"
+			},
+			{
 				"command": "extension.loremIpsumWord",
 				"title": "[Let's Hassel > LoremIpsum] > Generate a specified amount of words."
 			},

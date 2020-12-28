@@ -22,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const extension_path = path.join(__dirname, "..");
 	const templates_path = path.join(extension_path, "templates");
 
-	let commandSetup = vscode.commands.registerCommand(
+	let commandSetupNode = vscode.commands.registerCommand(
 		"extension.setupNode",
 		async () => {
 			// make sure we really got a workspace
@@ -140,6 +140,7 @@ export function activate(context: vscode.ExtensionContext) {
 			vscode.window.showInformationMessage("Happy coding ...");
 
 			// start eslint assistant
+			vscode.window.showInformationMessage("configuring eslint…");
 			const terminal = await vscode.window.createTerminal({
 				name: `Terminal #${NEXT_TERM_ID++}`,
 				hideFromUser: true
@@ -165,6 +166,181 @@ export function activate(context: vscode.ExtensionContext) {
 				await terminal.sendText("npx eslint --init && git add . && git commit -m \"installed & configured npm package eslint\"");
 				await terminal.show(true);
 			}
+
+			// jump right into the window, onde it is available
+			const subscription = vscode.window.onDidChangeActiveTextEditor(
+				() => {
+					const editor = vscode.window.activeTextEditor;
+					if (editor) {
+						subscription.dispose();
+					} else {
+						vscode.window.showInformationMessage("Hmpf !!!");
+					}
+				}
+			);
+		}
+	);
+
+	let commandSetupElectron = vscode.commands.registerCommand(
+		"extension.setupElectron",
+		async () => {
+			// make sure we really got a workspace
+			if (workspace_path === undefined) {
+				vscode.window.showErrorMessage(
+					"You have not yet opened a folder!"
+				);
+				return;
+			}
+
+			const eslintconf: any = vscode.workspace
+				.getConfiguration("Let'sHassel.node")
+				.get("eslintconf");
+
+			// show alert
+			vscode.window.showInformationMessage("Setting up");
+
+			// ask for node version
+			const nvm_version = await vscode.window.showInputBox({
+				prompt: "Which Node.js version should be used?",
+				placeHolder: "e.g. 13"
+			});
+			if (nvm_version === undefined) {
+				vscode.window.showErrorMessage("Action canceled!");
+				return;
+			}
+
+			// ask for author's name
+			const author = await vscode.window.showInputBox({
+				prompt: "Please enter the authors name."
+			});
+			if (author === undefined) {
+				vscode.window.showErrorMessage("Action canceled!");
+				return;
+			}
+
+			// create src folder
+			const src_dir = path.join(workspace_path, "src");
+			if (!fs.existsSync(src_dir)) {
+				fs.mkdirSync(src_dir);
+			}
+
+			// create .nvmrc file
+			fs.writeFileSync(
+				path.join(workspace_path, ".nvmrc"),
+				`v${nvm_version}`
+			);
+
+			// create README.md file
+			fs.writeFileSync(
+				path.join(workspace_path, "README.md"),
+				`# ${path.basename(workspace_path)}`
+			);
+
+			// create CHANGELOG.md file
+			fs.closeSync(fs.openSync(path.join(workspace_path, 'CHANGELOG.md'), "w"));
+			
+			const cmd_templates = path.join(templates_path, "setupElectron");
+
+			// copy main.js template
+			fs.copySync(
+				path.join(cmd_templates, "main.js"),
+				path.join(workspace_path, "src/main.js")
+			);
+
+			// copy index.html template
+			fs.copySync(
+				path.join(cmd_templates, "index.html"),
+				path.join(workspace_path, "src/index.html")
+			);
+
+			// copy .gitignore template
+			fs.copySync(
+				path.join(cmd_templates, "gitignore"),
+				path.join(workspace_path, ".gitignore")
+			);
+
+			// create custom package.json (using the template file)
+			const package_json = require(path.join(
+				cmd_templates,
+				"package.json"
+			));
+
+			// set project name and author
+			Object.assign(package_json, {
+				name: path.basename(workspace_path),
+				author
+			});
+
+			// write it to the target file
+			fs.writeFileSync(
+				path.join(workspace_path, "package.json"),
+				JSON.stringify(package_json, null, 4)
+			);
+
+			// installing electron
+			await npm.install(["electron"], {
+				cwd: workspace_path,
+				saveDev: true
+			});
+
+			// init git repo
+			await git(workspace_path).init();
+			await git(workspace_path).add('./*');
+			await git(workspace_path).commit('initial commit');
+
+			// install eslint
+			await npm.install(["eslint"], {
+				cwd: workspace_path,
+				saveDev: true
+			});
+
+			// show the generated main.js
+			const uri = url.pathToFileURL(path.join(workspace_path, 'src/main.js'));
+			const editor = await vscode.window.showTextDocument(
+				vscode.Uri.parse(uri)
+			);
+
+			// jump right into the document
+			const range = editor.document.lineAt(0).range;
+			editor.selection = new vscode.Selection(range.end, range.end);
+
+			// let the coding begin!
+			vscode.window.showInformationMessage("Happy coding ...");
+
+			// start eslint assistant
+			vscode.window.showInformationMessage("configuring eslint…");
+			const terminal = await vscode.window.createTerminal({
+				name: `Terminal #${NEXT_TERM_ID++}`,
+				hideFromUser: true
+			} as any);
+
+			if (eslintconf) {
+
+				await npm.install(["eslint-config-airbnb-base", "eslint-plugin-import"], {
+					cwd: workspace_path,
+					saveDev: true
+				});
+
+				// copy .eslintrc template
+				await fs.copySync(
+					path.join(cmd_templates, "../generic/eslintrc-auto.json"),
+					path.join(workspace_path, ".eslintrc.json")
+				);
+
+				await git(workspace_path).add('./*');
+				await git(workspace_path).commit('installed & configured npm package eslint');
+
+			} else {
+				await terminal.sendText("npx eslint --init && git add . && git commit -m \"installed & configured npm package eslint\"");
+				await terminal.show(true);
+			}
+
+			const terminalUser = await vscode.window.createTerminal({
+				name: 'Electron x Let\'s Hassel',
+				hideFromUser: false
+			} as any);
+			await terminal.sendText("npm start");
+			await terminal.show(true);
 
 			// jump right into the window, onde it is available
 			const subscription = vscode.window.onDidChangeActiveTextEditor(
@@ -572,7 +748,8 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 
 	context.subscriptions.push(
-		commandSetup,
+		commandSetupNode,
+		commandSetupElectron,
 		commandloremIpsumWord,
 		commandloremIpsumSentence,
 		commandloremIpsumParagraph,
