@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
 
+## [9.2.0] - 2020-12-28
+
+### Added
+- dev-Script to node setup
+- package.json creator comment
+
 ## [9.1.0] - 2020-12-28
 
 ### Added
