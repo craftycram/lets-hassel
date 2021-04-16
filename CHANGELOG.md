@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
+## [9.3.0] - 2021-04-16
+
+### Changed
+- refactored commands into modules
 
 ## [9.2.0] - 2020-12-28
 
