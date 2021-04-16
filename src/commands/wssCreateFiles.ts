@@ -7,7 +7,7 @@ const mustache = require('mustache');
 
 const workspaces = vscode.workspace.workspaceFolders;
 const workspace_path = workspaces ? workspaces[0].uri.fsPath : undefined;
-const extension_path = path.join(__dirname, "..");
+const extension_path = path.join(__dirname, "..", "..");
 const templates_path = path.join(extension_path, "templates");
 
 export default vscode.commands.registerCommand(

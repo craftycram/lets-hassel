@@ -7,6 +7,7 @@ import commandloremIpsumParagraph from './commands/loremIpsumParagraph';
 import commandWssCreateFiles from './commands/wssCreateFiles';
 import commandWebCreateFiles from './commands/webCreateFiles';
 import commandRaspiSetupSD from './commands/setupRaspiSdCard';
+import commandFirebaseVueDeploy from './commands/firebaseVueDeploy';
 
 export function activate(context: vscode.ExtensionContext) {
 	console.log(
@@ -21,7 +22,8 @@ export function activate(context: vscode.ExtensionContext) {
 		commandloremIpsumParagraph,
 		commandWssCreateFiles,
 		commandWebCreateFiles,
-		commandRaspiSetupSD
+		commandRaspiSetupSD,
+		commandFirebaseVueDeploy,
 	);
 }
 
