@@ -30,6 +30,9 @@ A extension which allows you to hustle (hassel) more efficient by adding snippet
     * [Configuration](#electron-config)
     * [Usage](#electron-usage)
     * [Commands](#electron-commands)
+  * [Firebase Vue deploy Auto-Setup](#firebase-vue-deploy-setup)
+    * [Usage](#firebase-usage)
+    * [Commands](#firebase-commands)
   * [RaspiSSD Setup](#raspi-ssd-setup)
     * [Configuration](#raspi-config)
     * [Usage](#raspi-usage)
@@ -241,6 +244,31 @@ This decides wether you would like to use the extensions standard configuration 
 
 **1. Setup electron.js project in this folder**  
 This command generates a basic electron.js project workspace. [[Details](#usage)]
+
+<a name="firebase-vue-deploy-setup"></a>
+### Firebase Vue.js deploy setup
+
+This feature generates the files needed firebase deployment as well as GitHub actions CI deployment.
+
+
+<a name="firebase-usage"></a>
+#### Usage
+
+1. Run the command.
+2. Open the firebase console and create a new project.
+3. Copy the project id and provide it to the input popup in VS-Code.
+4. Wait for your files being created.
+5. Login to your firebase account using the command in the terminal to recieve the firebase CI token.
+6. Copy the token and open your repository on GitHub.
+7. Go into the repository settings > Secrets and create a new secret called "FIREBASE_HOSTING".
+8. Provide your token as the secrets value.
+9. Push your changes to the master branch. Your App should be automatically deployed.
+
+<a name="firebase-cmds"></a>
+#### Commands
+
+**1. Setup firebase deployment for your Vue.js project**  
+This command configures the project to deploy with firebase.
 
 <a name="raspi-ssd-setup"></a>
 ### RaspberryPi SD Setup (Wifi & SSH)

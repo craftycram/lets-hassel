@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
+## [10.0.0] - 2021-04-16
+
+### Added
+- Firebase deploy Vue.js project setup
+### Fixed
+- module paths
+
 ## [9.3.0] - 2021-04-16
 
 ### Changed
