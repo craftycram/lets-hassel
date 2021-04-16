@@ -37,7 +37,6 @@ export default vscode.commands.registerCommand(
       const globalModules = await require('child_process').execSync(`ls ${modulePath}`).toString().split('\n');
       if (!globalModules.includes('firebase-tools')) {
         vscode.window.showErrorMessage('Please install the firebase cli tools using: npm install -g firebase-tools');
-        return p;
       }
 
       vscode.window.showInformationMessage('Please create a new firebase project and copy it\'s id');
