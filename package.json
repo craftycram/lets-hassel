@@ -53,6 +53,10 @@
 			{
 				"command": "extension.setupRaspiSdCard",
 				"title": "[Let's Hassel] > Setup RaspberryPi SD Card. (Wifi & SSH config)"
+			},
+			{
+				"command": "extension.firebaseVueDeploy",
+				"title": "[Let's Hassel] > Setup firebase deployment for your Vue.js project"
 			}
 		],
 		"snippets": [
