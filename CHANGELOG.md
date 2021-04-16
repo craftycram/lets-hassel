@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
+
+## [10.0.1] - 2021-04-16
+
+### Fixed
+- just to check everythings alright with the last release
 ## [10.0.0] - 2021-04-16
 
 ### Added
