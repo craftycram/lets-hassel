@@ -5,12 +5,13 @@ const path = require("path");
 const url = require("url");
 const git = require("simple-git/promise");
 const npm = require("npm-programmatic");
-const exec = require('child_process').exec;
+const mustache = require('mustache');
 
 const workspaces = vscode.workspace.workspaceFolders;
 const workspace_path = workspaces ? workspaces[0].uri.fsPath : undefined;
-const extension_path = path.join(__dirname, "..");
+const extension_path = path.join(__dirname, "..", "..");
 const templates_path = path.join(extension_path, "templates");
+const cmd_templates = path.join(templates_path, "firebaseDeploy");
 
 export default vscode.commands.registerCommand(
   "extension.firebaseVueDeploy",
@@ -32,115 +33,70 @@ export default vscode.commands.registerCommand(
         console.log("User canceled the long running operation");
       });
 
-      const modulePath = await exec('npm bin -g');
-      console.log(modulePath);
+      const modulePath = await require('child_process').execSync('npm bin -g').toString().replace('bin', 'lib/node_modules');
+      const globalModules = await require('child_process').execSync(`ls ${modulePath}`).toString().split('\n');
+      if (!globalModules.includes('firebase-tools')) {
+        vscode.window.showErrorMessage('Please install the firebase cli tools using: npm install -g firebase-tools');
+        return p;
+      }
 
-      return p;
-
-      await npm.install(['firebase-tools'], {
-        cwd: workspace_path,
-        saveDev: true
-      });
-
-      await vscode.window.showInformationMessage('Please create a new firebase project and copy it\'s id');
+      vscode.window.showInformationMessage('Please create a new firebase project and copy it\'s id');
       await vscode.env.openExternal(vscode.Uri.parse('https://console.firebase.google.com/'));
 
-      // ask for node version
+      // ask for firebase id
       const firebaseId = await vscode.window.showInputBox({
         prompt: "What is the firebase project id?",
         placeHolder: "example-project"
       });
       if (firebaseId === undefined) {
-        vscode.window.showErrorMessage("Action canceled!");
+        vscode.window.showErrorMessage("Please provide the project id. Action canceled!");
         return;
       }
 
-      // create src folder
+      // create .github folder
       progress.report({
-        increment: 0,
-        message: 'creating src folder'
+        increment: 5,
+        message: 'creating .github folder'
       });
-      const src_dir = path.join(workspace_path, "src");
-      if (!fs.existsSync(src_dir)) {
-        fs.mkdirSync(src_dir);
+      const gh_dir = await path.join(workspace_path, ".github");
+      if (!fs.existsSync(gh_dir)) {
+        await fs.mkdirSync(gh_dir);
       }
 
-      // create empty index.js
+      // copy firebase.json file
       progress.report({
         increment: 5,
-        message: 'creating index.js'
+        message: 'copying firebase.json'
       });
-      fs.closeSync(
-        fs.openSync(path.join(workspace_path, "src", "index.js"), "w")
+      await fs.copySync(
+        path.join(cmd_templates, "firebase.json"),
+        path.join(workspace_path, "firebase.json")
       );
 
-      // create .nvmrc file
+      // copy deploy.yml file
       progress.report({
         increment: 5,
-        message: 'creating node config'
+        message: 'copying deploy.yml'
       });
-      fs.writeFileSync(
-        path.join(workspace_path, ".nvmrc"),
-        // `v${nvm_version}`
+      await fs.copySync(
+        path.join(cmd_templates, "deploy.yml"),
+        path.join(workspace_path, ".github", "deploy.yml")
       );
 
-      // create README.md file
+      // create custom .firebaserc file (using the template file)
       progress.report({
         increment: 5,
-        message: 'creating readme'
+        message: 'creating .firebaserc'
       });
-      fs.writeFileSync(
-        path.join(workspace_path, "README.md"),
-        `# ${path.basename(workspace_path)}`
+
+      const firebaserc = await fs.readFileSync(
+        path.join(cmd_templates, "firebaserc"),
+        "utf8"
       );
-
-      // create CHANGELOG.md file
-      progress.report({
-        increment: 5,
-        message: 'creating changelog'
+      const firebaserc_render = await mustache.render(firebaserc, {
+        firebaseId
       });
-      fs.closeSync(fs.openSync(path.join(workspace_path, 'CHANGELOG.md'), "w"));
-
-      // copy .gitignore template
-      progress.report({
-        increment: 5,
-        message: 'copying .gitignore'
-      });
-      const cmd_templates = path.join(templates_path, "setupNode");
-      fs.copySync(
-        path.join(cmd_templates, "gitignore"),
-        path.join(workspace_path, ".gitignore")
-      );
-
-      // create custom package.json (using the template file)
-      progress.report({
-        increment: 5,
-        message: 'creating package.json'
-      });
-      const package_json = require(path.join(
-        cmd_templates,
-        "package.json"
-      ));
-
-      // set project name and author
-      progress.report({
-        increment: 5,
-        message: 'assigning values'
-      });
-      Object.assign(package_json, {
-        name: path.basename(workspace_path),
-        // author
-      });
-
-      // write it to the target file
-      progress.report({
-        increment: 5,
-        message: 'saving'
-      });
-      fs.writeFileSync(
-        path.join(workspace_path, "package.json"),
-        JSON.stringify(package_json, null, 4)
-      );
+      await fs.writeFileSync(path.join(workspace_path, '.firebaserc'), firebaserc_render);
 
       // init git repo
       progress.report({
@@ -149,79 +105,19 @@ export default vscode.commands.registerCommand(
       });
       await git(workspace_path).init();
       await git(workspace_path).add('./*');
-      await git(workspace_path).commit('initial commit');
+      await git(workspace_path).commit('added firebase support');
 
-      // install eslint
-      progress.report({
-        increment: 5,
-        message: 'installing eslint'
-      });
-      await npm.install(["eslint"], {
-        cwd: workspace_path,
-        saveDev: true
-      });
+      const terminal = await vscode.window.createTerminal({
+        name: 'Let\'s Hassel - Firebase Setup',
+        hideFromUser: true,
+      } as any);
 
-
-      // start eslint assistant
-      progress.report({
-        increment: 5,
-        message: 'configuring eslint'
-      });
-      /*const terminal = await vscode.window.createTerminal({
-          name: 'Let\'s Hassel - Node Setup',
-          hideFromUser: true
-        }
-        as any);
+      await vscode.window.showInformationMessage("Please login with Firebase after dismissing this notification. Then create a 'FIREBASE_HOSTING' secret in your repos GitHub settings providing that token.");
+      terminal.sendText('firebase login:ci');
+      terminal.show();
       
-      if (eslintconf) {
-
-        await npm.install(["eslint-config-airbnb-base", "eslint-plugin-import"], {
-          cwd: workspace_path,
-          saveDev: true
-        });
-
-        // copy .eslintrc template
-        await fs.copySync(
-          path.join(cmd_templates, "../generic/eslintrc-auto.json"),
-          path.join(workspace_path, ".eslintrc.json")
-        );
-
-        await git(workspace_path).add('./*');
-        await git(workspace_path).commit('installed & configured npm package eslint');
-
-      } else {
-        await terminal.sendText("npx eslint --init && git add . && git commit -m \"installed & configured npm package eslint\"");
-        await terminal.show(true);
-      }
-      */
-      // show the generated index.js
-      progress.report({
-        increment: 10,
-        message: 'opening editor'
-      });
-      const uri = url.pathToFileURL(path.join(workspace_path, 'src/index.js'));
-      const editor = await vscode.window.showTextDocument(
-        vscode.Uri.parse(uri)
-      );
-
-      // jump right into the document
-      const range = editor.document.lineAt(0).range;
-      editor.selection = new vscode.Selection(range.end, range.end);
-
       // let the coding begin!
-      vscode.window.showInformationMessage("Happy coding ...");
-
-      // jump right into the window, onde it is available
-      const subscription = vscode.window.onDidChangeActiveTextEditor(
-        () => {
-          const editor = vscode.window.activeTextEditor;
-          if (editor) {
-            subscription.dispose();
-          } else {
-            vscode.window.showInformationMessage("Hmpf !!!");
-          }
-        }
-      );
+      vscode.window.showInformationMessage("To deploy just commit on branch master. Happy depoying...");
 
     });
     const p = new Promise(resolve => {
