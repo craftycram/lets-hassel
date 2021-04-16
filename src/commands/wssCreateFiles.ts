@@ -3,6 +3,7 @@ import * as vscode from "vscode";
 const fs = require("fs-extra");
 const path = require("path");
 const url = require("url");
+const mustache = require('mustache');
 
 const workspaces = vscode.workspace.workspaceFolders;
 const workspace_path = workspaces ? workspaces[0].uri.fsPath : undefined;
