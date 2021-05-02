@@ -62,6 +62,16 @@ export default vscode.commands.registerCommand(
         await fs.mkdirSync(gh_dir);
       }
 
+      // create workflows folder
+      progress.report({
+        increment: 5,
+        message: 'creating .github/workflows folder'
+      });
+      const wf_dir = await path.join(workspace_path, ".github", "workflows");
+      if (!fs.existsSync(wf_dir)) {
+        await fs.mkdirSync(wf_dir);
+      }
+
       // copy firebase.json file
       progress.report({
         increment: 5,
@@ -79,7 +89,7 @@ export default vscode.commands.registerCommand(
       });
       await fs.copySync(
         path.join(cmd_templates, "deploy.yml"),
-        path.join(workspace_path, ".github", "deploy.yml")
+        path.join(workspace_path, ".github", "workflows", "deploy.yml")
       );
 
       // create custom .firebaserc file (using the template file)

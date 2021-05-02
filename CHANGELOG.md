@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
 
+## [10.0.3] - 2021-05-03
+
+### Fixed
+- firebase deploy github workflows folder
+
 ## [10.0.2] - 2021-04-16
 
 ### Changed
