@@ -2,7 +2,7 @@
 	"name": "lets-hassel",
 	"displayName": "Let's Hassel",
 	"description": "A extension which adds snippets for a bunch of programming languages. Used in the programming classes @HfG",
-	"version": "10.1.0",
+	"version": "10.1.1",
 	"publisher": "craftycram",
 	"icon": "res/logo-let-s-hassel.png",
 	"engines": {
