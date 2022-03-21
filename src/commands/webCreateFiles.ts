@@ -15,9 +15,7 @@ export default vscode.commands.registerCommand(
   async () => {
     // make sure we really got a workspace
     if (workspace_path === undefined) {
-      vscode.window.showErrorMessage(
-        "You have not yet opened a folder!"
-      );
+      vscode.window.showErrorMessage("You have not yet opened a folder!");
       return;
     }
 
@@ -32,6 +30,10 @@ export default vscode.commands.registerCommand(
     const style = `style.css`;
     fs.closeSync(fs.openSync(path.join(workspace_path, style), "w"));
 
+    // create empty js file
+    const script = `script.js`;
+    fs.closeSync(fs.openSync(path.join(workspace_path, script), "w"));
+
     // create html from mustache template
     const html_template = fs.readFileSync(
       path.join(cmd_templates, "index.html"),
@@ -43,7 +45,8 @@ export default vscode.commands.registerCommand(
     const html_out = mustache.render(html_template, {
       title,
       style,
-      content: ""
+      script,
+      content: "",
     });
 
     // create html file
@@ -51,31 +54,35 @@ export default vscode.commands.registerCommand(
     fs.writeFileSync(path.join(workspace_path, html), html_out);
 
     // add relation info to css
-    fs.writeFileSync(path.join(workspace_path, style), `/* related to ${html} */`);
+    fs.writeFileSync(
+      path.join(workspace_path, style),
+      `/* related to ${html} */`
+    );
+    // add relation info to js
+    fs.writeFileSync(
+      path.join(workspace_path, script),
+      `/* related to ${html} */`
+    );
 
     // show the generated html
     const uri = url.pathToFileURL(path.join(workspace_path, html));
-    const editor = await vscode.window.showTextDocument(
-      vscode.Uri.parse(uri)
-    );
+    const editor = await vscode.window.showTextDocument(vscode.Uri.parse(uri));
 
     // jump right into the document
-    const range = editor.document.lineAt(8).range;
+    const range = editor.document.lineAt(9).range;
     editor.selection = new vscode.Selection(range.end, range.end);
 
     // let the coding begin!
     vscode.window.showInformationMessage("Happy coding ...");
 
     // jump right into the window, onde it is available
-    const subscription = vscode.window.onDidChangeActiveTextEditor(
-      () => {
-        const editor = vscode.window.activeTextEditor;
-        if (editor) {
-          subscription.dispose();
-        } else {
-          vscode.window.showInformationMessage("Hmpf !!!");
-        }
+    const subscription = vscode.window.onDidChangeActiveTextEditor(() => {
+      const editor = vscode.window.activeTextEditor;
+      if (editor) {
+        subscription.dispose();
+      } else {
+        vscode.window.showInformationMessage("Hmpf !!!");
       }
-    );
+    });
   }
 );

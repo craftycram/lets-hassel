@@ -13,59 +13,58 @@
 
 A extension which allows you to hustle (hassel) more efficient by adding snippets for a bunch of programming languages. Used in the programming classes at HfG Schwäbisch Gmünd.
 
-##### Table of Contents  
+##### Table of Contents
 
-* [Requirements](#requirements)
-* [Installation](#installation)  
-* [Features](#features)
-  * [Programming Languages & File Types](#supported-programming-languages--file-types)
-    * [JavaScript](#javascript)
-    * [HTML](#html)
-    * [SVG](#svg)
-  * [Node.js Workspace Auto-Setup](#nodejs-workspace-auto-setup)
-    * [Configuration](#node-config)
-    * [Usage](#usage)
-    * [Commands](#commands)
-  * [electron.js Workspace Auto-Setup](#electronjs-workspace-auto-setup)
-    * [Configuration](#electron-config)
-    * [Usage](#electron-usage)
-    * [Commands](#electron-commands)
-  * [Firebase Vue deploy Auto-Setup](#firebase-vue-deploy-setup)
-    * [Usage](#firebase-usage)
-    * [Commands](#firebase-commands)
-  * [RaspiSSD Setup](#raspi-ssd-setup)
-    * [Configuration](#raspi-config)
-    * [Usage](#raspi-usage)
-    * [Commands](#raspi-cmds)
-  * [LoremIpsum Generator](#loremipsum-generator)
-    * [Configuration](#lorem-config)
-    * [Usage](#lorem-usage)
-    * [Commands](#lorem-cmds)
-  * [Web File Generator](#web-file-generator)
-    * [Configuration](#web-config)
-    * [Usage](#web-usage)
-    * [Commands](#web-cmds)
-  * [WSS File Generator](#wss-file-generator)
-    * [Configuration](#wss-config)
-    * [Usage](#wss-usage)
-    * [Commands](#wss-cmds)
-* [Troubleshooting](#troubleshooting)
-* [Release Notes](https://github.com/craftycram/lets-hassel/blob/master/CHANGELOG.md)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Features](#features)
+  - [Programming Languages & File Types](#supported-programming-languages--file-types)
+    - [JavaScript](#javascript)
+    - [HTML](#html)
+    - [SVG](#svg)
+  - [Node.js Workspace Auto-Setup](#nodejs-workspace-auto-setup)
+    - [Configuration](#node-config)
+    - [Usage](#usage)
+    - [Commands](#commands)
+  - [electron.js Workspace Auto-Setup](#electronjs-workspace-auto-setup)
+    - [Configuration](#electron-config)
+    - [Usage](#electron-usage)
+    - [Commands](#electron-commands)
+  - [Firebase Vue deploy Auto-Setup](#firebase-vue-deploy-setup)
+    - [Usage](#firebase-usage)
+    - [Commands](#firebase-commands)
+  - [RaspiSSD Setup](#raspi-ssd-setup)
+    - [Configuration](#raspi-config)
+    - [Usage](#raspi-usage)
+    - [Commands](#raspi-cmds)
+  - [LoremIpsum Generator](#loremipsum-generator)
+    - [Configuration](#lorem-config)
+    - [Usage](#lorem-usage)
+    - [Commands](#lorem-cmds)
+  - [Web File Generator](#web-file-generator)
+    - [Configuration](#web-config)
+    - [Usage](#web-usage)
+    - [Commands](#web-cmds)
+  - [WSS File Generator](#wss-file-generator)
+    - [Configuration](#wss-config)
+    - [Usage](#wss-usage)
+    - [Commands](#wss-cmds)
+- [Troubleshooting](#troubleshooting)
+- [Release Notes](https://github.com/craftycram/lets-hassel/blob/master/CHANGELOG.md)
 
 > If the links aren't working properly try viewing the docs on [GitHub](https://github.com/craftycram/lets-hassel/).
-If the problem is still there you can create an issue.
-
+> If the problem is still there you can create an issue.
 
 ## Requirements
 
-You need Visual Studio Code installed to use this extension.  
+You need Visual Studio Code installed to use this extension.
 
 > Install Visual Studio Code: [Official Website](https://code.visualstudio.com/)
-
 
 ## Installation
 
 The extension can be installed via the `VS Code Extension Manager`.
+
 1. Open the `Extension Manager` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>X</kbd> or via the menu `View > Extensions`.
 2. On the top-left highlight the search-bar.
 3. Enter the extensions name (`Let's Hassel`) or it's slug-name (`craftycram.lets-hassel`)
@@ -73,43 +72,47 @@ The extension can be installed via the `VS Code Extension Manager`.
 
 > Read the official documentation for more detailed help: [VS Code Docs - Extensions](https://code.visualstudio.com/docs/editor/extension-gallery)
 
-
 ## Features
 
 Once you created a file of one of the supported types or languages you can auto-generate different code blocks by typing `!`and the shortname which you can find in these docs below.
 You can also use this extension to automatically generate loremipsum text, a basic Node.js workspace and other project files. Instructions on how that feature can be used can be found in these docs as well.
 
-
 ### Supported Programming Languages & File Types
-* [JavaScript](#lang-js)
-* [HTML](#lang-html)
-* [SVG](#lang-svg)
+
+- [JavaScript](#lang-js)
+- [HTML](#lang-html)
+- [SVG](#lang-svg)
 
 #### JavaScript
 
 **1. Require**  
 Shortcut: `!req`  
-This generates the import/require line for Node.js applications.  
+This generates the import/require line for Node.js applications.
+
 ```
 const = require('');
 const <TABSTOP> = require('<TABSTOP>');<FINALPOS>
 ```
+
 > You can use <kbd>⇥ Tab</kbd> to jump from `<TABSTOP>` to `<TABSTOP>` and to the `<FINALPOS>`
 
 **2. Else-If**  
 Shortcut: `!elif`  
-This generates the else-if structure.  
+This generates the else-if structure.
+
 ```
   else if (<TABSTOP>) {
 	  <FINALPOS>
   }
 ```
+
 > You can use <kbd>⇥ Tab</kbd> to jump from `<TABSTOP>` to `<TABSTOP>` and to the `<FINALPOS>`
 
 **3. Index.js**  
 Shortcut: `!index`  
 This generates the index require structure for Node.js applications.  
-If you have a folder with a similar named `.js` file you can just create a `index.js` and use this shortcut to auto-complete the file. It uses the file-/folder-name to generate it, so be aware that they are the same.  
+If you have a folder with a similar named `.js` file you can just create a `index.js` and use this shortcut to auto-complete the file. It uses the file-/folder-name to generate it, so be aware that they are the same.
+
 ```
 const ${TM_DIRECTORY/^.+\\/(.*)$/$1/} = require('./${TM_DIRECTORY/^.+\\/(.*)$/$1/}');
 
@@ -121,6 +124,7 @@ module.exports = ${TM_DIRECTORY/^.+\\/(.*)$/$1/};
 **1. HTML basic structure**  
 Shortcut: `!html`  
 This generates the basic HTML structure.
+
 ```
 <!doctype html>
 <html>
@@ -133,6 +137,7 @@ This generates the basic HTML structure.
 	</body>
 </html>
 ```
+
 > You can use <kbd>⇥ Tab</kbd> to jump from `<TABSTOP>` to `<TABSTOP>` and to the `<FINALPOS>`
 
 #### SVG
@@ -140,11 +145,13 @@ This generates the basic HTML structure.
 **1. SVG basic structure**  
 Shortcut: `!svg`  
 This generates the basic SVG structure.
+
 ```
 <svg width="<TABSTOP>" height="<TABSTOP>" xmlns="http://www.w3.org/2000/svg">
   <FINALPOS>
 </svg>
 ```
+
 > You can use <kbd>⇥ Tab</kbd> to jump from `<TABSTOP>` to `<TABSTOP>` and to the `<FINALPOS>`
 
 ### Node.js Workspace Auto-Setup
@@ -164,6 +171,7 @@ It creates the main `index.js`, initializes a git repository, installs `eslint` 
 8. Your workspace is ready to go.
 
 The created structure will look like this:
+
 ```
 .
 ├── node_modules        // installed Node.js modules
@@ -179,6 +187,7 @@ The created structure will look like this:
 ```
 
 <a name="node-config"></a>
+
 #### Configuration
 
 You can change some of the feature settings in the `VS Code settings` under `Extensions > Let's Hassel`.
@@ -186,7 +195,7 @@ You can change some of the feature settings in the `VS Code settings` under `Ext
 ##### Settings:
 
 1. Eslintconf:
-This decides wether you would like to use the extensions standard configuration for `eslint` or if you would like to configure it on your own each time.
+   This decides wether you would like to use the extensions standard configuration for `eslint` or if you would like to configure it on your own each time.
 
 > You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
 
@@ -201,6 +210,7 @@ This feature automatically generates you a basic Electron.js workspace structure
 It creates the main `main.js` & `index.html`, initializes a git repository, installs `eslint` and starts its setup assistant. More details on that under [Usage](#usage)
 
 <a name="electron-usage"></a>
+
 #### Usage
 
 1. Create a new project folder and open it in `VS Code`.
@@ -213,6 +223,7 @@ It creates the main `main.js` & `index.html`, initializes a git repository, inst
 8. Your workspace is ready to go.
 
 The created structure will look like this:
+
 ```
 .
 ├── node_modules        // installed Node.js modules
@@ -229,6 +240,7 @@ The created structure will look like this:
 ```
 
 <a name="electron-config"></a>
+
 #### Configuration
 
 You can change some of the feature settings in the `VS Code settings` under `Extensions > Let's Hassel`.
@@ -236,7 +248,7 @@ You can change some of the feature settings in the `VS Code settings` under `Ext
 ##### Settings:
 
 1. Eslintconf:
-This decides wether you would like to use the extensions standard configuration for `eslint` or if you would like to configure it on your own each time.
+   This decides wether you would like to use the extensions standard configuration for `eslint` or if you would like to configure it on your own each time.
 
 > You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
 
@@ -246,12 +258,13 @@ This decides wether you would like to use the extensions standard configuration 
 This command generates a basic electron.js project workspace. [[Details](#usage)]
 
 <a name="firebase-vue-deploy-setup"></a>
+
 ### Firebase Vue.js deploy setup
 
 This feature generates the files needed firebase deployment as well as GitHub actions CI deployment.
 
-
 <a name="firebase-usage"></a>
+
 #### Usage
 
 1. Run the command.
@@ -265,17 +278,20 @@ This feature generates the files needed firebase deployment as well as GitHub ac
 9. Push your changes to the master branch. Your App should be automatically deployed.
 
 <a name="firebase-cmds"></a>
+
 #### Commands
 
 **1. Setup firebase deployment for your Vue.js project**  
 This command configures the project to deploy with firebase.
 
 <a name="raspi-ssd-setup"></a>
+
 ### RaspberryPi SD Setup (Wifi & SSH)
 
 This feature generates the files needed for Wifi & SSH access on your RaspberryPi after flashing a new SD card.
 
 <a name="raspi-config"></a>
+
 #### Configuration
 
 You can change some of the generators settings in the `VS Code settings` under `Extensions > Let's Hassel`.
@@ -283,14 +299,15 @@ You can change some of the generators settings in the `VS Code settings` under `
 ##### Settings:
 
 1. Country code:
-The country code of your local wifi.
+   The country code of your local wifi.
 
 2. Workspace check:
-If this is enabled the directory check will be disabled.
+   If this is enabled the directory check will be disabled.
 
 > You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
 
 <a name="raspi-usage"></a>
+
 #### Usage
 
 1. Flash your SD card with a RaspberryPiOS image and open the boot partition in `VS Code`.
@@ -302,6 +319,7 @@ If this is enabled the directory check will be disabled.
 7. Your sd card is ready to go.
 
 <a name="raspi-cmds"></a>
+
 #### Commands
 
 **1. Setup RaspberryPi SD Card. (Wifi & SSH config)**  
@@ -313,6 +331,7 @@ You can use this feature to fill your placeholders with random text.
 You can either create a custom amount of words, sentences or paragraphs.
 
 <a name="lorem-config"></a>
+
 #### Configuration
 
 You can change some of the generators settings in the `VS Code settings` under `Extensions > Let's Hassel`.
@@ -320,27 +339,27 @@ You can change some of the generators settings in the `VS Code settings` under `
 ##### Settings:
 
 1. Format:  
-This changes the format of the text between normal text or HTML formatted text.
+   This changes the format of the text between normal text or HTML formatted text.
 
 2. Minimum words in a sentence:  
-The minimal amount of words used in a sentence.
+   The minimal amount of words used in a sentence.
 
 3. Maximum words in a sentence:  
-The maximal amount of words in a sentence.
+   The maximal amount of words in a sentence.
 
 4. Minimum sentences in a paragraph:  
-The minimal amount of sentences in a paragraph.
+   The minimal amount of sentences in a paragraph.
 
 5. Maximum sentences in a paragraph:  
-The maximal amount of sentences in a paragraph.
+   The maximal amount of sentences in a paragraph.
 
 > You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
 
-
 <a name="lorem-usage"></a>
+
 #### Usage
 
-There are three different commands which generate different amount of text.  
+There are three different commands which generate different amount of text.
 
 1. Move your cursor to the position where the text should be generated or select the area you want to replace.
 2. Open the `Command Palette` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd> or via the menu `View > Command Palette`.
@@ -348,8 +367,8 @@ There are three different commands which generate different amount of text.
 4. Enter the amount of words, sentences or paragraphs in the popup window.
 5. Confirm with <kbd>&#x23ce; Return</kbd>.
 
-
 <a name="lorem-cmds"></a>
+
 #### Commands
 
 **1. Generate a specified amount of words**  
@@ -366,6 +385,7 @@ This command creates a random LoremIpsum text with a given amount of paragraphs.
 You can use this feature to create a basic website structure consisting of a `index.html` and `style.css`.
 
 <a name="web-config"></a>
+
 #### Configuration
 
 You can change some of the generators settings in the `VS Code settings` under `Extensions > Let's Hassel`.  
@@ -374,33 +394,33 @@ Make sure that you configured it properly before first use!
 ##### Settings:
 
 1. Title:
-The title of your HTML document, visible in the browser.  
-(Also used by the WSS generator)
+   The title of your HTML document, visible in the browser.  
+   (Also used by the WSS generator)
 
 > You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
 
-
 <a name="web-usage"></a>
+
 #### Usage
 
 1. Open VS Code in a folder.
 2. Open the `Command Palette` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd> or via the menu `View > Command Palette`.
 3. Type one of the available commands. [[Commands](#web-cmds)]
-5. Confirm with <kbd>&#x23ce; Return</kbd>.
-
+4. Confirm with <kbd>&#x23ce; Return</kbd>.
 
 <a name="web-cmds"></a>
+
 #### Commands
 
 **1. Create web files. (index.html + style.css)**  
 This command creates a index.html and style.css file linked with each other.
-
 
 ### WSS File Generator
 
 You can use this feature to create the file structure used in the lessons of one of our lecturers.
 
 <a name="wss-config"></a>
+
 #### Configuration
 
 You can change some of the generators settings in the `VS Code settings` under `Extensions > Let's Hassel`.  
@@ -409,39 +429,39 @@ Make sure that you configured it properly before first use!
 ##### Settings:
 
 1. Filename:  
-This specifies how the file will be named.
+   This specifies how the file will be named.
 
 2. Filenumber:  
-The number added to the end of the file.
+   The number added to the end of the file.
 
 3. Title:
-The title of your HTML document, visible in the browser.  
-(This used the title config of the web generator settings)
+   The title of your HTML document, visible in the browser.  
+   (This used the title config of the web generator settings)
 
 > You can use <kbd>⌘ Command</kbd>+<kbd>,</kbd> to open the settings.
 
-
 <a name="wss-usage"></a>
+
 #### Usage
 
 1. Open VS Code in a folder.
 2. Open the `Command Palette` with the shortcut <kbd>⇧ Shift</kbd>+<kbd>⌘ Command</kbd>+<kbd>P</kbd> or via the menu `View > Command Palette`.
 3. Type one of the available commands. [[Commands](#wss-cmds)]
-5. Confirm with <kbd>&#x23ce; Return</kbd>.
-
+4. Confirm with <kbd>&#x23ce; Return</kbd>.
 
 <a name="wss-cmds"></a>
+
 #### Commands
 
 **1. Create WSS files. (HTML & CSS)**  
 This command creates a HTML and CCS file linked with each other with the nomenclature of WSS.
 
-
 ## Troubleshooting
 
 #### Shortcuts not working?
-Make sure that your file is in the correct language mode. Usually if you safe your file in the correct filetype VS Code automatically set's the correct language mode. If it doesn't you can also set it yourself in the bottom-right corner or by entering `Change Language Mode` in the `Command Palette`.
-> Read the official documentation for more detailed help: [VS Code Docs - Language Mode](https://code.visualstudio.com/docs/languages/overview#_changing-the-language-for-the-selected-file)
 
+Make sure that your file is in the correct language mode. Usually if you safe your file in the correct filetype VS Code automatically set's the correct language mode. If it doesn't you can also set it yourself in the bottom-right corner or by entering `Change Language Mode` in the `Command Palette`.
+
+> Read the official documentation for more detailed help: [VS Code Docs - Language Mode](https://code.visualstudio.com/docs/languages/overview#_changing-the-language-for-the-selected-file)
 
 **Enjoy!**
