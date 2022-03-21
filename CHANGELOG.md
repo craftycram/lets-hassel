@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.  
 These won't exactly match the commit history, they only document the version history of the VS Code Extension Manager
 
+## [10.1.1] - 2022-03-21
+
+### Changed
+
+- dependency security patch
+
 ## [10.1.0] - 2022-03-21
 
 ### Added
